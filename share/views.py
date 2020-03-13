@@ -11,4 +11,4 @@ def index(request):
     print('request:' , request)
     print('*******************************')
     if request.method == "GET":
-        return render(request, 'share/static/share/startbootstrap/index.html')
+        return render(request, 'share/base.html')
