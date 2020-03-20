@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>plantBUDS</title>
+  <title>plantBUDS - Login</title>
   {% load static %}
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" type="text/css" href="{% static 'share/startbootstrap/vendor/bootstrap/css/bootstrap.min.css' %}"/>
@@ -54,9 +54,50 @@
   <header class="masthead text-center text-white">
     <div class="masthead-content">
       <div class="container">
-        <h1 class="masthead-heading mb-0">plantBUDS</h1>
-        <h2 class="masthead-subheading mb-0">LEARN MORE ABOUT GARDENING</h2>
-        <a href="#" class="btn btn-primary btn-xl rounded-pill mt-5">Learn More</a>
+
+        <div class="columns">
+          <div class="column">
+
+            <nav class="panel">
+
+              <div class="panel-block">
+
+                <form action="{% url 'share:loguser' %}" method="post">
+
+                  {% csrf_token %}
+                  <div class="field">
+                    <label class="label">Username</label>
+                    <div class="control has-icons-left has-icons-right">
+                      <input class="input is-success" type="text" placeholder=" Username" name="username">
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-user"></i>
+                      </span>
+                      <span class="icon is-small is-right">
+                        <i class="fas fa-check"></i>
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <label class="label">Password</label>
+                    <div class="control has-icons-left">
+                      <input class="input" name="password" placeholder=" Password" type="password">
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-lock"></i>
+                      </span>
+                    </div>
+
+                  </div>
+                  <div class="field">
+                    <div class="control">
+                      <button class="btn btn-primary btn-xl rounded-pill mt-4" type="submit" value="Login">Login</button>&nbsp;
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </nav>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -148,31 +189,31 @@
 <!-- <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sharing Code</title>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'share/bulma-0.8.0/css/bulma.css' %}"/>
-    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{% static 'share/main.css' %}"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sharing Code</title>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'share/bulma-0.8.0/css/bulma.css' %}"/>
+<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% static 'share/main.css' %}"/>
 </head>
 
 <body>
 
 <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-        <a class="navbar-item" href="{% url 'share:index' %}">
-            <img src="{% static 'share/images/picture.jpg' %}" alt=" icon" width="40" height="40">
-        </a>
-    </div>
+<div class="navbar-brand">
+<a class="navbar-item" href="{% url 'share:index' %}">
+<img src="{% static 'share/images/picture.jpg' %}" alt=" icon" width="40" height="40">
+</a>
+</div>
 </nav>
 
 <section class="section">
-    <div class="container">
-        {% block content %}
+<div class="container">
+{% block content %}
 
-        {% endblock content %}
-    </div>
+{% endblock content %}
+</div>
 </section>
 
 </body>

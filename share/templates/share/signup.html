@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>plantBUDS</title>
+  <title>plantBUDS - New User Registration</title>
   {% load static %}
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" type="text/css" href="{% static 'share/startbootstrap/vendor/bootstrap/css/bootstrap.min.css' %}"/>
@@ -55,8 +55,66 @@
     <div class="masthead-content">
       <div class="container">
         <h1 class="masthead-heading mb-0">plantBUDS</h1>
-        <h2 class="masthead-subheading mb-0">LEARN MORE ABOUT GARDENING</h2>
-        <a href="#" class="btn btn-primary btn-xl rounded-pill mt-5">Learn More</a>
+        <div class="columns">
+          <div class="column ">
+
+            <nav class="panel">
+              <p class="panel-heading" style="text-align:center">
+                <span><strong>Registration Form</strong></span>
+              </p>
+              <div class="panel-block">
+                <!-- the action of the form goes to create function in views.py -->
+                <form class="control" action="{% url 'share:create' %}" method="post">
+                  {% csrf_token %}
+                  <div class="field">
+                    <label class="label">Username</label>
+                    <div class="control has-icons-left has-icons-right">
+                      <input class="input" placeholder="Username" type="text" name="username"/>
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-user"></i>
+                      </span>
+                      <span class="icon is-small is-right">
+                        <i class="fas fa-check"></i>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">Email</label>
+                    <div class="control has-icons-left has-icons-right">
+                      <input class="input" placeholder="Email" type="email" name="email"/>
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-envelope"></i>
+                      </span>
+                      <span class="icon is-small is-right">
+                        <i class="fas fa-exclamation-triangle"></i>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">Password</label>
+                    <div class="control has-icons-left">
+                      <input class="input" placeholder="Password" type="password" name="password">
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-lock"></i>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <p class="control">
+                      <button class="button is-success" type="submit" value="Signup">Signup</button>
+                    </p>
+                  </div>
+                  <label class="checkbox">
+                    <input type="checkbox" id="coder_yet_checkbox" name="coder_yet_checkbox", value=False />
+                    <!-- Returns True if the checkbox is checked -->
+                    Click here to register your farm and create a free PlantBudPRO Account!
+                  </label>
+                </form>
+              </div>
+            </nav>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -148,31 +206,31 @@
 <!-- <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sharing Code</title>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'share/bulma-0.8.0/css/bulma.css' %}"/>
-    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{% static 'share/main.css' %}"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sharing Code</title>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'share/bulma-0.8.0/css/bulma.css' %}"/>
+<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% static 'share/main.css' %}"/>
 </head>
 
 <body>
 
 <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-        <a class="navbar-item" href="{% url 'share:index' %}">
-            <img src="{% static 'share/images/picture.jpg' %}" alt=" icon" width="40" height="40">
-        </a>
-    </div>
+<div class="navbar-brand">
+<a class="navbar-item" href="{% url 'share:index' %}">
+<img src="{% static 'share/images/picture.jpg' %}" alt=" icon" width="40" height="40">
+</a>
+</div>
 </nav>
 
 <section class="section">
-    <div class="container">
-        {% block content %}
+<div class="container">
+{% block content %}
 
-        {% endblock content %}
-    </div>
+{% endblock content %}
+</div>
 </section>
 
 </body>
