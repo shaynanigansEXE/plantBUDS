@@ -139,8 +139,4 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'share/static'),
 )
-<<<<<<< HEAD
-
-=======
->>>>>>> heroku-deployment
 django_heroku.settings(locals())
