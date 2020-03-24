@@ -1,1 +1,1 @@
-web: gunicorn plantBUDS.wsgi --log-file -
+web: gunicorn plantBUDS.wsgi
