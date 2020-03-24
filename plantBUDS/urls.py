@@ -18,5 +18,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('share.urls')),
+    path('https://plant-buds.herokuapp.com/', include('share.urls')),
 ]
