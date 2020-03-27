@@ -96,15 +96,6 @@ DATABASES['default'].update(db_from_env)
 # try runserver localy now
 # python manage.py runserver
 
-DATABASES['default'] = dj_database_url.config(default=' ENTER URI FROM YOUR APP DB    ')
-# The content of default= '  '   is  found in Heroku app URI, starts with postgres://...
-# allow us to connect locally the DB is Heroku
-
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
-# try runserver localy now
-# python manage.py runserver
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -141,10 +132,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-<<<<<<< HEAD
-
-=======
->>>>>>> SignUp
 TATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_URL = '/static/'
