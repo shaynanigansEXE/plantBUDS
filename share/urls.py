@@ -1,6 +1,8 @@
 from django.urls import path, include
 from . import views  #import everything from views module
+
 app_name = 'share'
+
 urlpatterns = [
     # Most redirects lead here if user has been authenticated
     path('', views.index, name='index'),
