@@ -27,7 +27,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -87,7 +87,7 @@ DATABASES = {
         #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-DATABASES['default'] = dj_database_url.config(default='https://git.heroku.com/plant-buds.git')
+DATABASES['default'] = dj_database_url.config(default='postgres://ilhddvxatbiprq:562f504dd03d4c9c71ffb65189327eccad8153da25fa1835576e669b0775b5c4@ec2-52-71-85-210.compute-1.amazonaws.com:5432/d4clr4p5v40nnq')
 # The content of default= '  '   is  found in Heroku app URI, starts with postgres://...
 # allow us to connect locally the DB is Heroku
 
@@ -132,7 +132,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-TATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
