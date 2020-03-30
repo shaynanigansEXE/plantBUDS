@@ -1,12 +1,3 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from share.models import PlantTip
-
-# iteration2-initial-view
-def index(request):
-    if request.method == "GET":
-            return render(request, 'share/index.html')
-
 # import three functions: authentication, login, logout
 from django.contrib.auth import authenticate, login, logout
 
@@ -18,6 +9,22 @@ from .models import PlantTip, PlantBuddy
 
 # import User model
 from django.contrib.auth.models import User
+
+def index(request):
+
+    # request for user authentication
+    if request.method == "GET":
+        if request.user.is_authenticated:
+            user = request.user
+            # # all_problems is a list object [ ]
+            # all_problems = Problem.objects.all()
+
+            return render(request, "share/index.html", {"user":user})
+        else:
+            return redirect("share:login")
+    else:
+        return HttpResponse(status=500)
+
 
 def dashboard(request):
     # retieve user
