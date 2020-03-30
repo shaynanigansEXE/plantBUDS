@@ -17,6 +17,6 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+    path('share/', include('share.urls')),
     path('admin/', admin.site.urls),
-    path('', include('share.urls')),
 ]

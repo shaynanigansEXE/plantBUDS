@@ -1,190 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "share/base.html" %}
 
-<head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>plantBUDS - New User Registration</title>
-  {% load static %}
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" type="text/css" href="{% static 'share/startbootstrap/vendor/bootstrap/css/bootstrap.min.css' %}"/>
-
-  <!-- Custom fonts for this template -->
-  <link rel="stylesheet" type="text/css" href="{% static 'share/startbootstrap/css/one-page-wonder.css' %}"/>
-
-  <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
-  <!-- <link rel="stylesheet" type="text/css" href="{% static 'share/main.css' %}"/> -->
-  <link rel="stylesheet" type="text/css" href="{% static 'share/startbootstrap/css/one-page-wonder.min.css' %}">
-  <!-- <link href="css/one-page-wonder.min.css" rel="stylesheet"> -->
-
-</head>
-
-<body>
-
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+{% block content %}
+<header class="masthead text-center text-white">
+  <div class="masthead-content">
     <div class="container">
-      <a class="navbar-brand" href="{% url 'share:index' %}">plantBUDS</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="dashboard">Dashboard</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="signup">Sign Up</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="login">Log In</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+      <div class="columns">
+        <div class="column ">
 
-  <header class="masthead text-center text-white">
-    <div class="masthead-content">
-      <div class="container">
-        <div class="columns">
-          <div class="column ">
-
-            <nav class="panel">
-              <p class="panel-heading" style="text-align:center">
-                <span><strong><h2>Registration Form</h2></strong></span>
-              </p>
-              <div class="panel-block">
-                <!-- the action of the form goes to create function in views.py -->
-                <form class="control" action="{% url 'share:create' %}" method="post">
-                  {% csrf_token %}
-                  <div class="field">
-                    <label class="label">Username</label>
-                    <div class="control has-icons-left has-icons-right">
-                      <input class="input" placeholder="Username" type="text" name="username"/>
-                      <span class="icon is-small is-left">
-                        <i class="fas fa-user"></i>
-                      </span>
-                      <span class="icon is-small is-right">
-                        <i class="fas fa-check"></i>
-                      </span>
-                    </div>
+          <nav class="panel">
+            <p class="panel-heading" style="text-align:center">
+              <span><strong><h2>Registration Form</h2></strong></span>
+            </p>
+            <div class="panel-block">
+              <!-- the action of the form goes to create function in views.py -->
+              <form class="control" action="{% url 'share:create' %}" method="post">
+                {% csrf_token %}
+                <div class="field">
+                  <label class="label">Username</label>
+                  <div class="control has-icons-left has-icons-right">
+                    <input class="input" placeholder="Username" type="text" name="username"/>
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-user"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                      <i class="fas fa-check"></i>
+                    </span>
                   </div>
-                  <div class="field">
-                    <label class="label">Email</label>
-                    <div class="control has-icons-left has-icons-right">
-                      <input class="input" placeholder="Email" type="email" name="email"/>
-                      <span class="icon is-small is-left">
-                        <i class="fas fa-envelope"></i>
-                      </span>
-                      <span class="icon is-small is-right">
-                        <i class="fas fa-exclamation-triangle"></i>
-                      </span>
-                    </div>
+                </div>
+                <div class="field">
+                  <label class="label">Email</label>
+                  <div class="control has-icons-left has-icons-right">
+                    <input class="input" placeholder="Email" type="email" name="email"/>
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-envelope"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                      <i class="fas fa-exclamation-triangle"></i>
+                    </span>
                   </div>
-                  <div class="field">
-                    <label class="label">Password</label>
-                    <div class="control has-icons-left">
-                      <input class="input" placeholder="Password" type="password" name="password">
-                      <span class="icon is-small is-left">
-                        <i class="fas fa-lock"></i>
-                      </span>
-                    </div>
+                </div>
+                <div class="field">
+                  <label class="label">Password</label>
+                  <div class="control has-icons-left">
+                    <input class="input" placeholder="Password" type="password" name="password">
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-lock"></i>
+                    </span>
                   </div>
-                  <div class="field">
-                    <p class="control">
-                      <button class="btn btn-primary btn-xl rounded-pill mt-4" type="submit" value="Signup">Signup</button>
-                    </p>
-                  </div>
-                  <label class="checkbox">
-                    <input type="checkbox" id="farm_pro_checkbox" name="farm_pro_checkbox", value=False />
-                    <!-- Returns True if the checkbox is checked -->
-                    Click here to register your farm and create a free PlantBudPRO Account!
-                  </label>
-                </form>
-              </div>
-            </nav>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-  </header>
-
-  <section>
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6 order-lg-2">
-          <div class="p-5">
-            <img class="img-fluid rounded-circle" src="{% static 'share/startbootstrap/img/farm_scene.jpg' %}" alt="icon">
-          </div>
-        </div>
-        <div class="col-lg-6 order-lg-1">
-          <div class="p-5">
-            <h2 class="display-4">Farmers and Gardeners!</h2>
-            <p>Learn to garden within your community or travel to others!</p>
-          </div>
+                </div>
+                <div class="field">
+                  <p class="control">
+                    <button class="btn btn-primary btn-xl rounded-pill mt-4" type="submit" value="Signup">Signup</button>
+                  </p>
+                </div>
+                <label class="checkbox">
+                  <input type="checkbox" id="farm_pro_checkbox" name="farm_pro_checkbox", value=False />
+                  <!-- Returns True if the checkbox is checked -->
+                  Click here to register your farm and create a free PlantBudPRO Account!
+                </label>
+              </form>
+            </div>
+          </nav>
         </div>
       </div>
-    </div>
-  </section>
+  </div>
+</div>
 
-  <section>
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6">
-          <div class="p-5">
-            <img class="img-fluid rounded-circle" src="{% static 'share/startbootstrap/img/plant.png' %}" alt="">
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="p-5">
-            <h2 class="display-4">Trade seeds!</h2>
-            <p>Trade seeds with friends or have a gardening party to hang out and plants and trade seeds!</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6 order-lg-2">
-          <div class="p-5">
-            <img class="img-fluid rounded-circle" src="{% static 'share/startbootstrap/img/veggies.jpg' %}" alt="">
-          </div>
-        </div>
-        <div class="col-lg-6 order-lg-1">
-          <div class="p-5">
-            <h2 class="display-4">Garden party!</h2>
-            <p>Plan a garden party within your community and gain knowledge on other peoples favorite types of seeds or just plant for fun!</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="py-5 bg-black">
-    <div class="container">
-      <p class="m-0 text-center text-white small">Copyright &copy; Your Website 2019</p>
-    </div>
-    <!-- /.container -->
-  </footer>
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-</body>
-
-</html>
+    {% endblock content %}

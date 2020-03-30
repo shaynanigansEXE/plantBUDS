@@ -1,120 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "share/base.html" %}
 
-<head>
+{% block content %}
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+<div class="columns">
+      <div class="column">
 
-  <title>plantBUDS - Login</title>
-  {% load static %}
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" type="text/css" href="{% static 'share/startbootstrap/vendor/bootstrap/css/bootstrap.min.css' %}"/>
+           <nav class="panel">
+            <p class="panel-heading" style="text-align:center">
+            <span><strong>Login</strong></span>
+            </p>
 
-  <!-- Custom fonts for this template -->
-  <link rel="stylesheet" type="text/css" href="{% static 'share/startbootstrap/css/one-page-wonder.css' %}"/>
+            <div class="panel-block">
 
-  <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+                 <form action="{% url 'share:loguser' %}" method="post">
 
-  <!-- Custom styles for this template -->
-  <!-- <link rel="stylesheet" type="text/css" href="{% static 'share/main.css' %}"/> -->
-  <link rel="stylesheet" type="text/css" href="{% static 'share/startbootstrap/css/one-page-wonder.min.css' %}">
-  <!-- <link href="css/one-page-wonder.min.css" rel="stylesheet"> -->
+                      {% csrf_token %}
+                      <div class="field">
+                          <label class="label">Username</label>
+                            <div class="control has-icons-left has-icons-right">
+                              <input class="input is-success" type="text" placeholder="Username" name="username">
+                              <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                              </span>
+                              <span class="icon is-small is-right">
+                                <i class="fas fa-check"></i>
+                              </span>
+                            </div>
+                      </div>
 
-</head>
+                      <div class="field">
+                          <label class="label">Password</label>
+                          <div class="control has-icons-left">
+                              <input class="input" name="password" placeholder="Password" type="password">
+                              <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                              </span>
+                          </div>
 
-<body>
+                      </div>
+                      <div class="field">
+                          <div class="control">
+                              <button class="button is-success is-outlined is-fullwidth" type="submit" value="Login">Login</button>&nbsp;
 
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="{% url 'share:index' %}">plantBUDS</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="dashboard">Dashboard</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="signup">Sign Up</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="login">Log In</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+                           </div>
+                      </div>
+                  </form>
+            </div>
+          </nav>
 
-  <header class="masthead text-center text-white">
-    <div class="masthead-content">
-      <div class="container">
-
-        <div class="columns">
-          <div class="column">
-
-            <nav class="panel">
-
-              <div class="panel-block">
-
-                <form action="{% url 'share:loguser' %}" method="post">
-
-                  {% csrf_token %}
-                  <div class="field">
-                    <label class="label">Username</label>
-                    <div class="control has-icons-left has-icons-right">
-                      <input class="input is-success" type="text" placeholder=" Username" name="username">
-                      <span class="icon is-small is-left">
-                        <i class="fas fa-user"></i>
-                      </span>
-                      <span class="icon is-small is-right">
-                        <i class="fas fa-check"></i>
-                      </span>
-                    </div>
-                  </div>
-
-                  <div class="field">
-                    <label class="label">Password</label>
-                    <div class="control has-icons-left">
-                      <input class="input" name="password" placeholder=" Password" type="password">
-                      <span class="icon is-small is-left">
-                        <i class="fas fa-lock"></i>
-                      </span>
-                    </div>
-
-                  </div>
-                  <div class="field">
-                    <div class="control">
-                      <button class="button is-success is-outlined is-fullwidth" type="submit" value="Login">Login</button>&nbsp;
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </nav>
-          </div>
         </div>
       </div>
-    </div>
 
-  </header>
-
-  <!-- Footer -->
-  <footer class="py-5 bg-black">
-    <div class="container">
-      <p class="m-0 text-center text-white small">Copyright &copy; PlantBuds 2020</p>
-    </div>
-    <!-- /.container -->
-  </footer>
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-</body>
-
-</html>
+{% endblock content %}
