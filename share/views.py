@@ -1,16 +1,21 @@
 # import three functions: authentication, login, logout
 from django.contrib.auth import authenticate, login, logout
-
 # import redirect
 from django.shortcuts import render, redirect
-
 # import all the models created so far
 from .models import PlantTip, PlantBuddy
-
 # import User model
 from django.contrib.auth.models import User
 
 def index(request):
+    # Testing http request object inside a view function
+    print('*********** Testing request obj ************')
+    print('request:' , request)
+    print('request.headers: ', request.headers)
+    print('request.headers["host"]:', request.headers['host'])
+    print('request.method: ', request.method)
+    print('request.user:' , request.user)
+    print('*******************************')
 
     # request for user authentication
     if request.method == "GET":
@@ -19,16 +24,23 @@ def index(request):
             # # all_problems is a list object [ ]
             # all_problems = Problem.objects.all()
 
-            return render(request, "share/index.html", {"user":user})
+            return render(request, "share/base.html", {"user":user})
         else:
             return redirect("share:login")
     else:
         return HttpResponse(status=500)
 
-
 def dashboard(request):
     # retieve user
     # renders dashboard.html
+    # Testing http request object inside a view function
+    print('*********** Testing request obj ************')
+    print('request:' , request)
+    print('request.headers: ', request.headers)
+    print('request.headers["host"]:', request.headers['host'])
+    print('request.method: ', request.method)
+    print('request.user:' , request.user)
+    print('*******************************')
 
     if request.method == "GET":
         user = request.user
@@ -74,7 +86,7 @@ def create(request):
 
 def login_view(request):
     if request.user.is_authenticated:
-        return redirect("share:index")
+        return redirect("share:base")
     return render(request, 'share/login.html')
 
 # the function loguser is called from the login form
@@ -87,8 +99,8 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect("share:index")
+            return redirect("share:base")
         else:
             return render(request, "share/login.html", {"error":"Wrong username or password"})
     else:
-        return redirect("share:index")
+        return redirect("share:base")
