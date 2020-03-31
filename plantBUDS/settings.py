@@ -89,7 +89,6 @@ DATABASES = {
 }
 # Attempted fix #3: Tried adding the URI to this line for access to our database
 DATABASES['default'] = dj_database_url.config(default='postgres://ilhddvxatbiprq:562f504dd03d4c9c71ffb65189327eccad8153da25fa1835576e669b0775b5c4@ec2-52-71-85-210.compute-1.amazonaws.com:5432/d4clr4p5v40nnq')
-')
 # The content of default= '  '   is  found in Heroku app URI, starts with postgres://...
 # allow us to connect locally the DB is Heroku
 
