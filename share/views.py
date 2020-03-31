@@ -7,7 +7,7 @@ from .models import PlantTip, PlantBuddy
 # import User model
 from django.contrib.auth.models import User
 
-def index(request):
+def base(request):
     # Testing http request object inside a view function
 
     # request for user authentication
