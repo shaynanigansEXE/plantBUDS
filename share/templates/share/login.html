@@ -1,6 +1,128 @@
 {% extends "share/base.html" %}
 
+<<<<<<< HEAD
 {% block content %}
+=======
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>plantBUDS - Login</title>
+  {% load static %}
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" type="text/css" href="{% static 'share/startbootstrap/vendor/bootstrap/css/bootstrap.min.css' %}"/>
+
+  <!-- Custom fonts for this template -->
+  <link rel="stylesheet" type="text/css" href="{% static 'share/startbootstrap/css/one-page-wonder.css' %}"/>
+
+  <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <!-- <link rel="stylesheet" type="text/css" href="{% static 'share/main.css' %}"/> -->
+  <link rel="stylesheet" type="text/css" href="{% static 'share/startbootstrap/css/one-page-wonder.min.css' %}">
+  <!-- <link href="css/one-page-wonder.min.css" rel="stylesheet"> -->
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'share:index' %}">plantBUDS</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="dashboard">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="signup">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login">Log In</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="masthead text-center text-white">
+    <div class="masthead-content">
+      <div class="container">
+
+        <div class="columns">
+          <div class="column">
+
+            <nav class="panel">
+
+              <div class="panel-block">
+
+                <form action="{% url 'share:loguser' %}" method="post">
+
+                  {% csrf_token %}
+                  <div class="field">
+                    <label class="label">Username</label>
+                    <div class="control has-icons-left has-icons-right">
+                      <input class="input is-success" type="text" placeholder=" Username" name="username">
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-user"></i>
+                      </span>
+                      <span class="icon is-small is-right">
+                        <i class="fas fa-check"></i>
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <label class="label">Password</label>
+                    <div class="control has-icons-left">
+                      <input class="input" name="password" placeholder=" Password" type="password">&nbsp;
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-lock"></i>
+                      </span>
+                    </div>
+
+                  </div>
+                  <div class="field">
+                    <div class="control">
+                      <button class="button btn-xl" type="submit" value="Login" style="margin-top: 10px">Login</button>&nbsp;
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </header>
+
+  <section>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 order-lg-2">
+          <div class="p-5">
+            <img class="img-fluid rounded-circle" src="{% static 'share/startbootstrap/img/farm_scene.jpg' %}" alt="icon">
+          </div>
+        </div>
+        <div class="col-lg-6 order-lg-1">
+          <div class="p-5">
+            <h2 class="display-4">Farmers and Gardeners!</h2>
+            <p>Learn to garden within your community or travel to others!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+>>>>>>> SignUp
 
 <div class="columns">
       <div class="column">
