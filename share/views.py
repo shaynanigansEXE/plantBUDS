@@ -37,7 +37,7 @@ def dashboard(request):
 
 def signup(request):
     if request.user.is_authenticated:
-        return redirect("share:index")
+        return redirect("share:base")
     return render(request, 'share/signup.html')
 
 def create(request):
@@ -65,7 +65,7 @@ def create(request):
             login(request, user, backend="django.contrib.auth.backends.ModelBackend")
             # this logs in our new user, backend means that we are using the  Django specific auhentication and not 3rd party
 
-        return redirect("share:index")
+        return redirect("share:base")
 
     else:
         return redirect("share:signup")
