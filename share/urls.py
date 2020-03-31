@@ -3,7 +3,7 @@ from . import views  #import everything from views module
 app_name = 'share'
 urlpatterns = [
     # Most redirects lead here if user has been authenticated
-    path('index', views.index, name='index'),
+    path('', views.index, name='index'),
 
     # authentication: signup, login, logout
     path('create', views.create, name='create'),
