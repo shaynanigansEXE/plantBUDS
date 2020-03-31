@@ -23,7 +23,7 @@ def index(request):
     else:
         return HttpResponse(status=500)
 
-def dashboard(request):
+def learn_more(request):
     # retieve user
     # renders dashboard.html
     # Testing http request object inside a view function
@@ -33,7 +33,7 @@ def dashboard(request):
         if not user.is_authenticated:
             return redirect("share:login")
         else:
-            return render(request, "share/dashboard.html")
+            return render(request, "share/learn_more.html")
 
 def signup(request):
     if request.user.is_authenticated:
@@ -90,3 +90,7 @@ def login_user(request):
             return render(request, "share/login.html", {"error":"Wrong username or password"})
     else:
         return redirect("share:base")
+
+def logout_view(request):
+    logout(request)
+    return redirect("share:login")
