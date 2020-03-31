@@ -9,13 +9,6 @@ from django.contrib.auth.models import User
 
 def index(request):
     # Testing http request object inside a view function
-    print('*********** Testing request obj ************')
-    print('request:' , request)
-    print('request.headers: ', request.headers)
-    print('request.headers["host"]:', request.headers['host'])
-    print('request.method: ', request.method)
-    print('request.user:' , request.user)
-    print('*******************************')
 
     # request for user authentication
     if request.method == "GET":
@@ -34,13 +27,6 @@ def dashboard(request):
     # retieve user
     # renders dashboard.html
     # Testing http request object inside a view function
-    print('*********** Testing request obj ************')
-    print('request:' , request)
-    print('request.headers: ', request.headers)
-    print('request.headers["host"]:', request.headers['host'])
-    print('request.method: ', request.method)
-    print('request.user:' , request.user)
-    print('*******************************')
 
     if request.method == "GET":
         user = request.user
