@@ -79,20 +79,20 @@ WSGI_APPLICATION = 'plantBUDS.wsgi.application'
 
 DATABASES = {
     'default': {
-        #'ENGINE': 'django.db.backends.sqlite3',
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
-DATABASES['default'] = dj_database_url.config(default=' ENTER URI FROM YOUR APP DB    ')
-# The content of default= '  '   is  found in Heroku app URI, starts with postgres://...
-# allow us to connect locally the DB is Heroku
-
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
-# try runserver localy now
-# python manage.py runserver
+# DATABASES['default'] = dj_database_url.config(default=' ENTER URI FROM YOUR APP DB    ')
+# # The content of default= '  '   is  found in Heroku app URI, starts with postgres://...
+# # allow us to connect locally the DB is Heroku
+#
+# db_from_env = dj_database_url.config(conn_max_age=600)
+# DATABASES['default'].update(db_from_env)
+# # try runserver localy now
+# # python manage.py runserver
 
 
 # Password validation
@@ -130,7 +130,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-TATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (

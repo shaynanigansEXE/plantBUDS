@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import PlantTip
+from .models import PlantTip, PlantBuddy
 
 admin.site.register(PlantTip)
 admin.site.register(PlantBuddy)
