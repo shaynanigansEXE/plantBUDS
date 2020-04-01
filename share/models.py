@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.utils import timezone
 
 # Create your models here.
 class PlantTip(models.Model):
@@ -8,10 +10,7 @@ class PlantTip(models.Model):
     def __str__(self):
         return self.tipTitle
 
-from django.db import models
-from django.contrib.auth.models import User
 
-from django.utils import timezone
 
 class PlantBuddy(models.Model):
 	def __str__(self):

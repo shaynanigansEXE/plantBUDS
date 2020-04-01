@@ -25,7 +25,7 @@ def base(request):
 
 def learn_more(request):
     # retieve user
-    # renders dashboard.html
+    # renders learn_more.html
     # Testing http request object inside a view function
 
     if request.method == "GET":
