@@ -35,8 +35,9 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'share:signup' %}">Signup</a>
             {% block signup %}
+            <a class="nav-link" href="{% url 'share:signup' %}">Signup</a>
+
             {% endblock %}
           </li>
           <li class="nav-item">

@@ -94,3 +94,17 @@ def login_user(request):
 def logout_view(request):
     logout(request)
     return redirect("share:login")
+
+'''
+def posts(request):
+    if request.method == "GET":
+        user = request.user
+        if not user.is_authenticated:
+            return redirect("share:login")
+        else:
+            # make sure to import the fucntion get_object_or_404 from  django.shortcuts
+            title = get_object_or_404(Problem, pk=problem_id)
+            text = Script.objects.filter(problem=problem_id)
+
+            return render(request, "share/problem.html", {"user":user, "title":problem, "scripts": scripts})
+'''
