@@ -1,34 +1,49 @@
-{% extends 'share/base.html' %}
+{% extends "share/base.html" %}
 
-{% block login %}
-<body>
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-        <div class="card card-signin my-5">
-          <div class="card-body">
-            <h5 class="card-title text-center">Sign In</h5>
-            <form class="form-signin">
-              <div class="form-label-group">
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                <label for="inputEmail">Email address</label>
-              </div>
+{% block content %}
 
-              <div class="form-label-group">
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                <label for="inputPassword">Password</label>
-              </div>
+<div class="columns">
+      <div class="column">
+           <nav class="panel">
+            <p class="panel-heading" style="text-align:center">
+            <span><strong>Login</strong></span>
+            </p>
+            <div class="panel-block">
+                 <form action="{% url 'share:loguser' %}" method="post">
+                      {% csrf_token %}
+                      <div class="field">
+                          <label class="label">Username</label>
+                            <div class="control has-icons-left has-icons-right">
+                              <input class="input is-success" type="text" placeholder="Username" name="username">
+                              <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                              </span>
+                              <span class="icon is-small is-right">
+                                <i class="fas fa-check"></i>
+                              </span>
+                            </div>
+                      </div>
 
-              <div class="custom-control custom-checkbox mb-3">
-                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                <label class="custom-control-label" for="customCheck1">Remember password</label>
-              </div>
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
-            </form>
-          </div>
-        </div>
+                      <div class="field">
+                          <label class="label">Password</label>
+                          <div class="control has-icons-left">
+                              <input class="input" name="password" placeholder="Password" type="password">
+                              <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                              </span>
+                          </div>
+
+                      </div>
+                      <div class="field">
+                          <div class="control">
+                              <button class="button is-success is-outlined is-fullwidth" type="submit" value="Login">Login</button>&nbsp;
+                          </div>
+                      </div>
+                  </form>
+            </div>
+          </nav>
       </div>
-    </div>
-  </div>
-</body>
-{% endblock %}
+</div>
+
+
+{% endblock content %}

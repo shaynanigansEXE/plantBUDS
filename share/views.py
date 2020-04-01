@@ -6,6 +6,8 @@ from django.shortcuts import render, redirect
 from .models import PlantTip, PlantBuddy
 # import User model
 from django.contrib.auth.models import User
+from django.http import HttpResponse
+
 
 def base(request):
     # Testing http request object inside a view function
@@ -14,12 +16,9 @@ def base(request):
     if request.method == "GET":
         if request.user.is_authenticated:
             user = request.user
-            # # all_problems is a list object [ ]
-            # all_problems = Problem.objects.all()
-
-            return render(request, "share/base.html", {"user":user})
+            return render(request, "share/login.html", {"user":user})
         else:
-            return redirect("share:login")
+            return redirect("share:base")
     else:
         return HttpResponse(status=500)
 
@@ -27,11 +26,11 @@ def learn_more(request):
     # retieve user
     # renders learn_more.html
     # Testing http request object inside a view function
-
+    # Testing http request object inside a view function
     if request.method == "GET":
         user = request.user
         if not user.is_authenticated:
-            return redirect("share:login")
+            return redirect("share:base")
         else:
             return render(request, "share/learn_more.html")
 
@@ -90,6 +89,7 @@ def login_user(request):
             return render(request, "share/login.html", {"error":"Wrong username or password"})
     else:
         return redirect("share:base")
+
 
 def logout_view(request):
     logout(request)
