@@ -1,6 +1,6 @@
 {% extends 'share/base.html' %}
 
-{% block learn %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -41,14 +41,13 @@
   </nav>
 
   <!-- Page Content -->
+  <!--
   <div class="container">
 
-    <!-- Jumbotron Header -->
     <header class="jumbotron my-4">
       <h2 class="display-3">Look at what other people have said!</h2>
     </header>
 
-    <!-- Page Features -->
     <div class="row text-left">
 
       <div class="col-lg-3 col-md-6 mb-4">
@@ -104,12 +103,55 @@
       </div>
 
     </div>
-    <!-- /.row -->
-
   </div>
-  <!-- /.container -->
 </body>
 
 </html>
+-->
+
+      <div class="columns">
+          <div class="column">
+              <div class="tile is-ancestor has-text-centered">
+                  <div style="margin: auto;" class="tile is-parent">
+                      <div class="tile is-child box">
+                          <h1 class="title is-2"> Hello &nbsp<span style="color:#1496ed">{{ user.username }}</span></h1>
+
+                          <h4 class="title is-5">You can publish new posts here:</h4>
+                          <a class="button is-info is-medium" href="#">Publish a new post!</a>
+                      </div>
+                  </div>
+              </div>
+
+                  <!-- This is only for testing to see the objects were passed to the template by the view -->
+
+                 <hr> ############ testing #######  <br>
+                  ################################## <br>
+                  <hr>
+                      <div class="box">
+                      <h2 class="title" style="color:#00d1b2">Posts you've created:</h2>
+<!--
+                      {% for p in problem %}
+                              <div class="content"> {{ p.title }}
+                                <a class="button is-primary is-small" href="{% url 'share:problem' p.id %}">Show more ...</a>
+
+
+                              </div>
+                      {% endfor %}
+                      </div>
+
+                      <div class="box">
+                        <h2 class="title " style="color:#00d1b2">Scripts written by you:</h2>
+                      {% for s in script %}
+                              <div class="content">
+                                  <br>Script Title: {{ s.title }}, Solves: {{ s.problem.title }}, posted by {{s.problem.coder.user.username}}
+
+                                  <a class="button is-primary is-small" href="{% url 'share:script' s.id %}">Show more ...</a>
+                              </div>
+                      {% endfor %}
+                      </div>
+                      -->
+          </div>
+      </div>
+
 
 {% endblock %}

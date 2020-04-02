@@ -30,7 +30,7 @@ def learn_more(request):
     if request.method == "GET":
         user = request.user
         if not user.is_authenticated:
-            return redirect("share:base")
+            return redirect("share:login")
         else:
             return render(request, "share/learn_more.html")
 
