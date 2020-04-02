@@ -22,7 +22,7 @@ def base(request):
     else:
         return HttpResponse(status=500)
 
-def learn_more(request):
+def dashboard(request):
     # retieve user
     # renders learn_more.html
     # Testing http request object inside a view function
@@ -32,11 +32,11 @@ def learn_more(request):
         if not user.is_authenticated:
             return redirect("share:login")
         else:
-            return render(request, "share/learn_more.html")
+            return render(request, "share/dashboard.html")
 
 def signup(request):
     if request.user.is_authenticated:
-        return redirect("share:base")
+        return redirect("share:dashboard")
     return render(request, 'share/signup.html')
 
 def create(request):
@@ -44,6 +44,8 @@ def create(request):
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
+        farm_pro = request.POST['farm_pro_checkbox']
+
         # # Had to make modifications because unchecked checkbox was throwing errors when submitting form
         # farm_pro = True
         # if request.POST.get and 'farm_pro' in request.POST and request.POST['farm_pro_checkbox'] == "False":
@@ -84,7 +86,7 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect("share:base")
+            return redirect("share:dashboard")
         else:
             return render(request, "share/login.html", {"error":"Wrong username or password"})
     else:
@@ -93,7 +95,7 @@ def login_user(request):
 
 def logout_view(request):
     logout(request)
-    return redirect("share:login")
+    return redirect("share:base")
 
 '''
 def posts(request):
