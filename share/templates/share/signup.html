@@ -1,6 +1,51 @@
 {% extends 'share/base.html' %}
 
-{% block signin %}
+{% block content %}
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h5 class="card-title text-center">Sign Up</h5>
+            <form class="form-signup" action="{% url 'share:create' %}" method="post">
+              {% csrf_token %}
+              <div class="form-label-group">
+                <input type="username" id="inputUsername" name="username" class="form-control" placeholder="Username" required autofocus/>
+                <label for="inputUsername">Username</label>
+              </div>
+              <div class="form-label-group">
+                <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email" required autofocus/>
+                <label for="inputEmail">Email</label>
+              </div>
+
+              <div class="form-label-group">
+                <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required/>
+                <label for="inputPassword">Password</label>
+              </div>
+<!--
+              <div class="custom-control custom-checkbox mb-3">
+                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                <label class="custom-control-label" for="customCheck1">Remember password</label>
+              </div>
+-->
+              <label class="checkbox">
+                <input type="checkbox" id="farm_pro_checkbox" name="farm_pro_checkbox", value=False />
+                <!-- Returns True if the checkbox is checked -->
+                Click here to register your farm and create a free PlantBudPRO Account!
+              </label>
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign up</button>
+              <hr class="my-4">
+              <button class="btn btn-lg btn-login btn-block text-uppercase" type="submit"><i class="fab fa-login mr-2"></i> Login</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<!--
 <header class="masthead text-center text-white">
   <div class="masthead-content">
     <div class="container">
@@ -12,7 +57,6 @@
               <span><strong><h2>Registration Form</h2></strong></span>
             </p>
             <div class="panel-block">
-              <!-- the action of the form goes to create function in views.py -->
               <form class="control" action="{% url 'share:create' %}" method="post">
                 {% csrf_token %}
                 <div class="field">
@@ -54,7 +98,6 @@
                 </div>
                 <label class="checkbox">
                   <input type="checkbox" id="farm_pro_checkbox" name="farm_pro_checkbox", value=False />
-                  <!-- Returns True if the checkbox is checked -->
                   Click here to register your farm and create a free PlantBudPRO Account!
                 </label>
               </form>
@@ -65,4 +108,6 @@
     </div>
   </div>
 </header>
+-->
+
 {% endblock %}

@@ -6,6 +6,8 @@ from django.shortcuts import render, redirect
 from .models import PlantTip, PlantBuddy
 # import User model
 from django.contrib.auth.models import User
+from django.http import HttpResponse
+
 
 def base(request):
     # Testing http request object inside a view function
@@ -14,30 +16,27 @@ def base(request):
     if request.method == "GET":
         if request.user.is_authenticated:
             user = request.user
-            # # all_problems is a list object [ ]
-            # all_problems = Problem.objects.all()
-
-            return render(request, "share/base.html", {"user":user})
+            return render(request, "share/login.html", {"user":user})
         else:
-            return redirect("share:login")
+            return redirect("share:base")
     else:
         return HttpResponse(status=500)
 
-def learn_more(request):
+def dashboard(request):
     # retieve user
     # renders learn_more.html
     # Testing http request object inside a view function
-
+    # Testing http request object inside a view function
     if request.method == "GET":
         user = request.user
         if not user.is_authenticated:
             return redirect("share:login")
         else:
-            return render(request, "share/learn_more.html")
+            return render(request, "share/dashboard.html")
 
 def signup(request):
     if request.user.is_authenticated:
-        return redirect("share:base")
+        return redirect("share:dashboard")
     return render(request, 'share/signup.html')
 
 def create(request):
@@ -45,6 +44,8 @@ def create(request):
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
+        farm_pro = request.POST['farm_pro_checkbox']
+
         # # Had to make modifications because unchecked checkbox was throwing errors when submitting form
         # farm_pro = True
         # if request.POST.get and 'farm_pro' in request.POST and request.POST['farm_pro_checkbox'] == "False":
@@ -85,12 +86,27 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect("share:base")
+            return redirect("share:dashboard")
         else:
             return render(request, "share/login.html", {"error":"Wrong username or password"})
     else:
         return redirect("share:base")
 
+
 def logout_view(request):
     logout(request)
-    return redirect("share:login")
+    return redirect("share:base")
+
+'''
+def posts(request):
+    if request.method == "GET":
+        user = request.user
+        if not user.is_authenticated:
+            return redirect("share:login")
+        else:
+            # make sure to import the fucntion get_object_or_404 from  django.shortcuts
+            title = get_object_or_404(Problem, pk=problem_id)
+            text = Script.objects.filter(problem=problem_id)
+
+            return render(request, "share/problem.html", {"user":user, "title":problem, "scripts": scripts})
+'''
