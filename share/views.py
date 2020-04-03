@@ -9,16 +9,16 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 
 
-def base(request):
+def index(request):
     # Testing http request object inside a view function
 
     # request for user authentication
     if request.method == "GET":
         if request.user.is_authenticated:
             user = request.user
-            return render(request, "share/login.html", {"user":user})
+            return render(request, "share/index.html", {"user":user})
         else:
-            return redirect("share:base")
+            return redirect("share:index")
     else:
         return HttpResponse(status=500)
 
@@ -36,7 +36,7 @@ def dashboard(request):
 
 def signup(request):
     if request.user.is_authenticated:
-        return redirect("share:dashboard")
+        return redirect("share:index ")
     return render(request, 'share/signup.html')
 
 def create(request):
@@ -66,14 +66,14 @@ def create(request):
             login(request, user, backend="django.contrib.auth.backends.ModelBackend")
             # this logs in our new user, backend means that we are using the  Django specific auhentication and not 3rd party
 
-        return redirect("share:base")
+        return redirect("share:index")
 
     else:
         return redirect("share:signup")
 
 def login_view(request):
     if request.user.is_authenticated:
-        return redirect("share:base")
+        return redirect("share:index")
     return render(request, 'share/login.html')
 
 # the function loguser is called from the login form
@@ -90,12 +90,12 @@ def login_user(request):
         else:
             return render(request, "share/login.html", {"error":"Wrong username or password"})
     else:
-        return redirect("share:base")
+        return redirect("share:index")
 
 
 def logout_view(request):
     logout(request)
-    return redirect("share:base")
+    return redirect("share:login")
 
 '''
 def posts(request):
