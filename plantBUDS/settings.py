@@ -15,7 +15,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 # ALLOWED_HOSTS = ["localhost", 'https://git.heroku.com/plant-buds.git']
-ALLOWED_HOSTS = ['https://https://plant-buds.herokuapp.com/']
+ALLOWED_HOSTS = ['https://plant-buds.herokuapp.com/']
 
 
 # Application definition
