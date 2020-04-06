@@ -1,42 +1,49 @@
 # import three functions: authentication, login, logout
 from django.contrib.auth import authenticate, login, logout
-# import redirect
-from django.shortcuts import render, redirect
-# import all the models created so far
-from .models import PlantTip, PlantBuddy
-# import User model
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import PlantBuddy, Posts
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 
 
 def index(request):
-    # Testing http request object inside a view function
-
     # request for user authentication
     if request.method == "GET":
         if request.user.is_authenticated:
             user = request.user
-            return render(request, "share/index.html", {"user":user})
+            all_posts = Posts.objects.all()   # all_problems is a list object [   ]
+
+            return render(request, "share/index.html", {"user":user, 'all_posts':all_posts})
         else:
-            return redirect("share:index")
+            return redirect("share:login")
     else:
         return HttpResponse(status=500)
 
 def dashboard(request):
-    # retieve user
-    # renders learn_more.html
-    # Testing http request object inside a view function
-    # Testing http request object inside a view function
+    print('*********** Testing request obj ************')
+    print('request:' , request)
+    print('request.headers: ', request.headers)
+    print('request.headers["host"]:', request.headers['host'])
+    print('request.method: ', request.method)
+    print('request.user:' , request.user)
+    print('*******************************')
+
     if request.method == "GET":
         user = request.user
         if not user.is_authenticated:
             return redirect("share:login")
         else:
-            return render(request, "share/dashboard.html")
+            my_posts = Posts.objects.filter(publisher=user.publisher.id)   # Posts table has a publisher field (FK)
+
+            print('*********** Testing objs retrieved from DB ************')
+            print('my_posts:', my_posts)
+            print('*******************************')
+
+            return render(request, "share/dashboard.html", {'my_posts':my_posts})
 
 def signup(request):
     if request.user.is_authenticated:
-        return redirect("share:index ")
+        return redirect("share:index")
     return render(request, 'share/signup.html')
 
 def create(request):
@@ -60,7 +67,7 @@ def create(request):
                 return render(request, "share/signup.html", {"error": "Email already exists"})
             # save our new user in the User model
             user = User.objects.create_user(username, email, password)
-            plantbuddy = PlantBuddy.objects.create(user= user, farm_pro = farm_pro).save()
+            publisher = PlantBuddy.objects.create(user= user, farm_pro = farm_pro).save()
             user.save()
 
             login(request, user, backend="django.contrib.auth.backends.ModelBackend")
@@ -92,21 +99,50 @@ def login_user(request):
     else:
         return redirect("share:index")
 
-
 def logout_view(request):
     logout(request)
     return redirect("share:login")
 
-'''
-def posts(request):
+def publish_post(request):
     if request.method == "GET":
         user = request.user
         if not user.is_authenticated:
             return redirect("share:login")
         else:
-            # make sure to import the fucntion get_object_or_404 from  django.shortcuts
-            title = get_object_or_404(Problem, pk=problem_id)
-            text = Script.objects.filter(problem=problem_id)
+            return render(request, "share/publish_post.html", {"user":user} )
 
-            return render(request, "share/problem.html", {"user":user, "title":problem, "scripts": scripts})
-'''
+def create_post(request):
+    if request.method == "POST":
+        user = request.user
+        if not user.is_authenticated:
+            return redirect("share:login")
+
+        publisher = user.publisher
+        title = request.POST["title"]
+        description = request.POST["description"]
+        discipline = request.POST["discipline"]
+        make_public = request.POST.get('make_public', False)
+        if make_public == 'on':
+            make_public = True
+        else:
+            make_public = False
+
+        if not title and not description:
+            return render(request, "share/publish_post.html", {"error":"Please fill in all required fields"})
+
+        try:
+            post = Posts.objects.create(publisher=publisher, title=title, description=description, discipline=discipline, make_public=make_public)
+            post.save()
+
+            post = get_object_or_404(Posts, pk=publisher.id)
+
+            return render(request, "share/problem.html",{"user":user, "post":post})
+
+        except:
+            return render(request, "share/publish_problem_form.html", {"error":"Can't create the problem"})
+
+    else:
+        # the user enteing    http://127.0.0.1:8000/problem/8/create
+        user = request.user
+        all_posts = Posts.objects.all()
+        return render(request, "share/index.html", {"user":user, "all_posts": all_posts, "error":"Can't create!"})

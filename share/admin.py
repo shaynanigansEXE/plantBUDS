@@ -1,10 +1,9 @@
 from django.contrib import admin
-from .models import PlantTip
+
+#from .models import PlantTip
 from .models import PlantBuddy
+from .models import Posts
 
-admin.site.register(PlantTip)
+#admin.site.register(PlantTip)
 admin.site.register(PlantBuddy)
-
-
-
-# Register your models here.
+admin.site.register(Posts)
