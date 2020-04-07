@@ -20,22 +20,26 @@ def index(request):
         return HttpResponse(status=500)
 
 def dashboard(request):
-    print('*********** Testing request obj ************')
-    print('request:' , request)
-    print('request.headers: ', request.headers)
-    print('request.headers["host"]:', request.headers['host'])
-    print('request.method: ', request.method)
-    print('request.user:' , request.user)
-    print('*******************************')
+    # print('*********** Testing request obj ************')
+    # print('request:' , request)
+    # print('request.headers: ', request.headers)
+    # print('request.headers["host"]:', request.headers['host'])
+    # print('request.method: ', request.method)
+    # print('request.user:' , request.user)
+    # print('*******************************')
 
     if request.method == "GET":
         user = request.user
         if not user.is_authenticated:
             return redirect("share:login")
         else:
-#            my_posts = Posts.objects.filter(publisher=user.publisher.id)   # Posts table has a publisher field (FK)
+            # my_posts = Posts.objects.filter(publisher=user.publisher.id)   # Posts table has a publisher field (FK)
 
+            # print('*********** Testing objs retrieved from DB ************')
+            # # print('my_posts:', my_posts)
+            # print('*******************************')
             return render(request, "share/dashboard.html")
+            # return render(request, "share/dashboard.html", {'my_posts':my_posts})
 
 def signup(request):
     if request.user.is_authenticated:
