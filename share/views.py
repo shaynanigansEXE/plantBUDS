@@ -33,13 +33,9 @@ def dashboard(request):
         if not user.is_authenticated:
             return redirect("share:login")
         else:
-            my_posts = Posts.objects.filter(publisher=user.publisher.id)   # Posts table has a publisher field (FK)
+#            my_posts = Posts.objects.filter(publisher=user.publisher.id)   # Posts table has a publisher field (FK)
 
-            print('*********** Testing objs retrieved from DB ************')
-            print('my_posts:', my_posts)
-            print('*******************************')
-
-            return render(request, "share/dashboard.html", {'my_posts':my_posts})
+            return render(request, "share/dashboard.html")
 
 def signup(request):
     if request.user.is_authenticated:
