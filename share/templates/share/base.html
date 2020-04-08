@@ -27,6 +27,11 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <a class="navbar-brand" href="{% url 'share:dashboard' %}">My Dashboard</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
@@ -43,20 +48,29 @@
     </div>
   </nav>
 
-  <header class="masthead text-center text-white">
-    <div class="masthead-content">
-      <div class="container">
-        <h1 class="masthead-heading mb-0">plantBUDS</h1>
-        <h2 class="masthead-subheading mb-0">LEARN MORE ABOUT GARDENING</h2>
-        <a class="btn btn-primary btn-xl rounded-pill mt-5" href="{% url 'share:dashboard' %}">Learn More</a>
-      </div>
-    </div>
+  <header class="jumbotron my-4" style="background-image: url(/static/share/images/cornfield.jpg)" style="padding-bottom: 2rem">
+    <h1 class="title is-2" style="padding-left: 500px">plantBUDS</h1>
+    <p class="lead" style="padding-left: 465px">LEARN MORE ABOUT PLANTS</p>
+    <a href="{% url 'share:index' %}" class="btn btn-primary btn-lg" style="margin-left: 530px">Learn More</a>
   </header>
+
 
   <section>
     {% block content%}
     {% endblock %}
   </section>
+
+<!--
+  <header class="masthead text-center text-white">
+    <div class="masthead-content">
+      <div class="container">
+        <h1 class="masthead-heading mb-0">plantBUDS</h1>
+        <h2 class="masthead-subheading mb-0">LEARN MORE ABOUT GARDENING</h2>
+        <a class="btn btn-primary btn-xl rounded-pill mt-5" href="{% url 'share:index' %}">Learn More</a>
+      </div>
+    </div>
+  </header>
+-->
 
   <!-- Footer -->
   <footer class="py-5 bg-black">
