@@ -9,21 +9,13 @@
       <p class="lead">You can publish new posts here:</p>
       <a href="{% url 'share:publish_post' %}" class="btn btn-primary btn-lg">Publish a post!</a>
       <p class="lead">Posts created by you:</p>
-      <a href="{% url 'share:all_posts' %}" class="btn btn-primary btn-lg">Show your posts!</a>
+      <a href="#" class="btn btn-primary btn-lg">Show your posts!</a>
     </header>
 
-<!--
-    <hr>
-        <div class="box">
-        <h2 class="title" style="color:#00d1b2">Posts created by you:</h2>
-        <a href="{% url 'share:all_posts' %}" class="btn btn-primary btn-lg">Show your posts!</a>
-        <br><br><br>
-      </div>
--->
-      <section>
-        {% block posts %}
-        {% endblock %}
-      </section>
+    <section>
+      {% block posts %}
+      {% endblock %}
+    </section>
 
   </div>
   <!-- /.container -->

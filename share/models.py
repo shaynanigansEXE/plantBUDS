@@ -21,13 +21,15 @@ class PlantBuddy(models.Model):
 	updated = models.DateField(auto_now=True)
 
 class Posts(models.Model):
-    def __str__(self):
-        return self.title
-    publisher = models.ForeignKey(PlantBuddy, on_delete=models.CASCADE)
-    title = models.CharField(max_length=50, null=False, blank=False, unique=False)
-    description = models.TextField(max_length=100, null=False, blank=False, unique=False)
-    image = models.ImageField(upload_to='myposts/', blank=True)
-    subject = models.CharField(max_length=50, null=False, blank=False, unique=False)
-    make_public = models.BooleanField(default=True)
-    created = models.DateField(auto_now_add=True)
-    updated = models.DateField(auto_now=True)     # everytime the obj is saved, new time is saved
+	def __str__(self):
+		return self.title
+	# FK
+	publisher = models.ForeignKey(PlantBuddy, on_delete=models.CASCADE, null=True)
+
+	title = models.CharField(max_length=50, null=False, blank=False, unique=False)
+	description = models.TextField(max_length=100, null=False, blank=False, unique=False)
+	body = models.TextField(max_length=10000, unique=False)
+	make_public = models.BooleanField(default=True)
+	image = models.ImageField(upload_to='my_posts/', blank=True)  # add an image for the algorithm or flow chart
+	created = models.DateField(auto_now=True)
+	updated = models.DateField(auto_now=True)

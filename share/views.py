@@ -103,6 +103,27 @@ def logout_view(request):
     logout(request)
     return redirect("share:login")
 
+'''
+
+def show_post(request, publisher_id):
+    if request.method == "GET":
+        user = request.user
+        if not user.is_authenticated:
+            return redirect("share:login")
+        else:
+            # make sure to import the fucntion get_object_or_404 from  django.shortcuts
+            post = get_object_or_404(Post, pk=publisher_id)
+
+            if post.publisher.user.id == user.id or post.make_public:
+                return render(request, "share/posts.html",
+                {"user":user, "post":post})
+            else:
+                # you are not the author
+                all_posts = Posts.objects.all()
+                return render(request, "share/index.html",
+                {"user":user, "all_posts": all_posts, "error":"The post you clicked is not public and you are not the author"})
+'''
+
 def edit_post(request, publisher_id):
     if request.method == "GET":
         user = request.user
@@ -123,7 +144,7 @@ def update_post(request, publisher_id):
         if not user.is_authenticated:
             return HttpResponse(status=500)
 
-        post = get_object_or_404(Posts, pk=Post_id)
+        post = get_object_or_404(Posts, pk=publisher_id)
 
         if not request.POST["title"] or not request.POST["description"] or not request.POST["subject"]:
             return render(request, "share/publish_post.html", {"publisher":publisher,
@@ -226,11 +247,3 @@ def create_post(request):
         user = request.user
         all_posts = Posts.objects.all()
         return render(request, "share/index.html", {"user":user, "all_posts": all_posts, "error":"Can't create!"})
-
-def all_posts(request):
-    if request.method == "GET":
-        user = request.user
-        if not user.is_authenticated:
-            return redirect("share:login")
-        else:
-            return render(request, "share/all_posts.html", {"user":user} )
