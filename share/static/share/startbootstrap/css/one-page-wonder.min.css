@@ -17,13 +17,19 @@
  .navbar-custom{padding-top:1rem;padding-bottom:1rem;background-color:rgba(0,0,0, 0);text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;}
  .navbar-custom .navbar-brand{text-transform:uppercase;color: rgb(79, 201, 79);font-size:1.25rem;letter-spacing:.1rem;font-weight:700}
  .navbar-brand:hover{text-shadow: 5px 2px 5px white}
- /*Only affects things with the "navbarResponsive" class id*/
- /*#navbarResponsive{background: url(../img/GrassRockGround.PNG)!important;background-position: center 100px bottom 100px!important;background-size:730px 70px!important;background-repeat: no-repeat !important;}*/
+
+ /*.navbar-brand{margin-top: -10px; padding-left: -20px; width: 300px; height: 70px; background: url(../img/SunTransparent.png);background-size:275px 70px!important; background-position:; background-repeat:no-repeat}*/
+ .navText{padding-top: 20px;}
+ /*Added 1px black border around navbar text objects for improved readability*/
+ .navbar-custom{padding-top:1rem;padding-bottom:1rem;background-color:rgba(0,0,0,.7);text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;}
+ .navbar-custom .navbar-brand{text-transform:uppercase;font-size:1.25rem;letter-spacing:.1rem;font-weight:700}
  .navbar-custom .navbar-nav .nav-item{text-transform:uppercase;font-size:.8rem;font-weight:700;letter-spacing:.1rem}
  /*Maxed opacity for better readability of nav-link objects*/
  .nav-link{text-transform: uppercase;color: rgb(79, 201, 79) !important;opacity: 100%}
  /*Added a hover effect for emphasizing nav-link objects when mouseover*/
- .nav-link:hover{text-shadow: 5px 2px 5px white !important}
+ .nav-link:hover{text-shadow: 2px 2px 3px orange}
+ /*Added a navbarContainer class to hold this picture of grass*/
+ .navbar-collapse{background: url(../img/GrassRockGround.PNG)!important;background-position:right bottom!important;background-size:contain!important;background-repeat:no-repeat!important;}
  /*Set a background image for the masthead (top portion of page)*/
  header.masthead{position:relative;overflow:hidden;padding-top:calc(7rem + 72px);padding-bottom:7rem;background: url(../img/cornfield.jpg)!important;background-repeat:no-repeat;background-position:center !important;background-size:1500px 1100px!important}
  header.masthead .masthead-content{z-index:1;position:relative}
