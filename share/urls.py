@@ -15,6 +15,11 @@ urlpatterns = [
     path('signup', views.signup, name='signup'),
     path('dashboard', views.dashboard, name='dashboard'),
     #path('posts', views.posts, name='posts')
+    path('all_posts', views.all_posts, name='all_posts'),
+    path('all/<int:publisher_id>/edit', views.edit_post, name='edit_post'),
+    path('all_posts/<int:publisher_id>/update', views.update_post, name='update_post'),
+    path('all_posts/<int:publisher_id>/delete', views.delete_post, name='delete_post'),
+
     path('publish_post', views.publish_post, name='publish_post'),
     path('create_post', views.create_post, name='create_post'),
 

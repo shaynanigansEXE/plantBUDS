@@ -103,6 +103,84 @@ def logout_view(request):
     logout(request)
     return redirect("share:login")
 
+def edit_post(request, publisher_id):
+    if request.method == "GET":
+        user = request.user
+        if not user.is_authenticated:
+            return redirect("share:login")
+
+        post = get_object_or_404(Posts, pk=publisher_id)
+
+        if post.publisher.user.id == user.id:
+            return render(request, "share/publish_post.html", {"publisher":publisher})
+        else:
+            return render(request, "share/index.html",
+            {"error":"You are not the author of the post that you tried to edit."})
+
+def update_post(request, publisher_id):
+    if request.method == "POST":
+        user = request.user
+        if not user.is_authenticated:
+            return HttpResponse(status=500)
+
+        post = get_object_or_404(Posts, pk=Post_id)
+
+        if not request.POST["title"] or not request.POST["description"] or not request.POST["subject"]:
+            return render(request, "share/publish_post.html", {"publisher":publisher,
+            "error":"One of the required fields was empty"})
+
+        else:
+            publisher = user.publisher
+            title = request.POST["title"]
+            description = request.POST["description"]
+            subject = request.POST["subject"]
+            body = request.POST["body"]
+
+            make_public = request.POST.get('make_public', False)
+
+            print('***********************')
+            print('user input make_public:', make_public)    # it shows as on
+
+            if make_public == 'on':
+                make_public = True
+            else:
+                make_public = False
+
+            print('******** Testing *************')
+            print('make_public:', make_public)
+            print('***********************')
+
+            if post.publisher.user.id == user.id and not post.make_public:
+                Posts.objects.filter(pk=publisher_id).update(publisher= publisher, title=title, description=description, subject=subject, body=body, make_public=make_public)
+                return redirect("share:dashboard")
+
+            else:
+                return render(request, "share/publish_post.html",{"publisher":publisher, "error":"Can't update!"})
+
+    else:
+        # the user enteing    http://127.0.0.1:8000/problem/8/update
+        user = request.user
+        all_posts = Posts.objects.all()
+        return render(request, "share/index.html", {"user":user, "all_posts": all_posts, "error":"Can't update!"})
+
+def delete_post(request, publisher_id):
+    if request.method == "GET":
+        user = request.user
+        if not user.is_authenticated:
+            return HttpResponse(status=500)
+
+        post = get_object_or_404(Posts, pk=publisher_id)
+
+        if post.publisher.user.id == user.id and not post.make_public:
+            Posts.objects.get(pk=publisher_id).delete()
+            return redirect("share:dashboard")
+        else:
+            all_posts = Posts.objects.all()
+            return render(request, "share/index.html", {"user":user, "all_posts": all_posts, "error":"Can't delete!"})
+
+    else:
+        return HttpResponse(status=500)
+
 def publish_post(request):
     if request.method == "GET":
         user = request.user
@@ -120,7 +198,9 @@ def create_post(request):
         publisher = user.publisher
         title = request.POST["title"]
         description = request.POST["description"]
-        discipline = request.POST["discipline"]
+        subject = request.POST["subject"]
+        body = request.POST["body"]
+
         make_public = request.POST.get('make_public', False)
         if make_public == 'on':
             make_public = True
@@ -131,18 +211,26 @@ def create_post(request):
             return render(request, "share/publish_post.html", {"error":"Please fill in all required fields"})
 
         try:
-            post = Posts.objects.create(publisher=publisher, title=title, description=description, discipline=discipline, make_public=make_public)
+            post = Posts.objects.create(publisher=publisher, title=title, description=description, subject=subject, body=body, make_public=make_public)
             post.save()
 
             post = get_object_or_404(Posts, pk=publisher.id)
 
-            return render(request, "share/problem.html",{"user":user, "post":post})
+            return render(request, "share/dashboard.html",{"user":user, "post":post})
 
         except:
-            return render(request, "share/publish_problem_form.html", {"error":"Can't create the problem"})
+            return render(request, "share/publish_post.html", {"error":"Can't create the post"})
 
     else:
         # the user enteing    http://127.0.0.1:8000/problem/8/create
         user = request.user
         all_posts = Posts.objects.all()
         return render(request, "share/index.html", {"user":user, "all_posts": all_posts, "error":"Can't create!"})
+
+def all_posts(request):
+    if request.method == "GET":
+        user = request.user
+        if not user.is_authenticated:
+            return redirect("share:login")
+        else:
+            return render(request, "share/all_posts.html", {"user":user} )

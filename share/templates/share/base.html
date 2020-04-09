@@ -10,6 +10,10 @@
   <title>plantBUDS</title>
   {% load static %}
   <!-- Bootstrap core CSS -->
+  <style type="text/css" media="screen">
+  .btn {text-align: center !important;}
+  </style>
+
   <link rel="stylesheet" type="text/css" href="{% static 'share/startbootstrap/vendor/bootstrap/css/bootstrap.min.css' %}">
   <!-- Custom fonts for this template -->
   <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
@@ -29,7 +33,6 @@
       </button>
       <a class="navbar-brand" href="{% url 'share:dashboard' %}">My Dashboard</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -48,12 +51,15 @@
     </div>
   </nav>
 
-  <header class="jumbotron my-4" style="background-image: url(/static/share/images/cornfield.jpg)" style="padding-bottom: 2rem">
-    <h1 class="title is-2" style="padding-left: 500px">plantBUDS</h1>
-    <p class="lead" style="padding-left: 465px">LEARN MORE ABOUT PLANTS</p>
-    <a href="{% url 'share:index' %}" class="btn btn-primary btn-lg" style="margin-left: 530px">Learn More</a>
-  </header>
 
+  <div class="container">
+    <!-- Jumbotron Header -->
+    <header class="jumbotron my-4" style="background-image: url(/static/share/images/unnamed.jpg); background-repeat: no-repeat;">
+      <h1 class="title is-2" style="text-align: center">plantBUDS</h1>
+      <p class="lead" style="text-align: center">LEARN MORE ABOUT PLANTS</p>
+      <a href="{% url 'share:index' %}" class="btn btn-primary btn-lg" style="float: right">Learn More</a>
+    </header>
+  </div>
 
   <section>
     {% block content%}
