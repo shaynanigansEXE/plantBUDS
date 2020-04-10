@@ -22,7 +22,7 @@ class PlantBuddy(models.Model):
 class Blog(models.Model):
     def __str__(self):
         return self.title
-    publisher = models.ForeignKey(PlantBuddy, on_delete=models.CASCADE)
+    publisher_id = models.ForeignKey(PlantBuddy, on_delete=models.CASCADE)
     title = models.CharField(max_length=50, null=False, blank=False, unique=False)
     description = models.TextField(max_length=100, null=False, blank=False, unique=False)
     subject = models.CharField(max_length=50, null=False, blank=False, unique=False)

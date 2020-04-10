@@ -135,7 +135,7 @@ def create_post(request):
         if not user.is_authenticated:
             return redirect("share:login")
 
-        publisher = request.POST["publisher"]
+        publisher = user.publisher
         title = request.POST["title"]
         description = request.POST["description"]
         subject = request.POST["subject"]
@@ -146,7 +146,7 @@ def create_post(request):
         else:
             make_public = False
 
-        if not title and not description:
+        if not title and not description and not body:
             return render(request, "share/publish_post.html", {"error":"Please fill in all required fields"})
 
         try:
@@ -155,10 +155,10 @@ def create_post(request):
 
             post = get_object_or_404(Blog, pk=publisher.id)
 
-            return render(request, "share/problem.html",{"user":user, "post":post})
+            return render(request, "share/farmer_posts.html",{"user":user, "post":post})
 
         except:
-            return render(request, "share/publish_problem_form.html", {"error":"Can't create the problem"})
+            return render(request, "share/publish_post.html", {"error":"Can't create the problem"})
 
     else:
         # the user enteing    http://127.0.0.1:8000/problem/8/create

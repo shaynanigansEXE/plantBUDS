@@ -1,108 +1,5 @@
 {% extends "share/dashboard.html" %}
 {% block posts %}
-
-<head>
-<style>
-body {font-family: Arial, Helvetica, sans-serif;}
-* {box-sizing: border-box;}
-
-h3 {
-  text-align: center;
-}
-
-input[type=text], select, textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  margin-top: 6px;
-  margin-bottom: 16px;
-  resize: vertical;
-}
-
-input[type=submit] {
-  background-color: #4CAF50;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-input[type=submit]:hover {
-  background-color: #45a049;
-}
-
-.container {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-}
-</style>
-</head>
-    <div class="container">
-
-        <div class="column" >
-            <h4 class="title is-5">Create your new post:</h4>
-             {% if error %}
-                    <h3 style="color: red">{{ error }}</h3>
-                {% endif %}
-            <form action="{% url 'share:create_post' %}" method="post">
-            {% csrf_token %}
-              <div class="field">
-                <div class="control">
-                  <label class="label" id='publisher' name='publisher' >Publisher: {{ user.username }} </label>
-                </div>
-              </div>
-
-                <div class="field">
-                  <div class="control">
-                    <label class="label">*Title</label>
-                    <input id='title' placeholder="Title" type="text" name="title">
-                  </div>
-                </div>
-
-                <div class="field">
-                      <div class="control">
-                        <label class="label">*Description</label>
-                        <input type="text" id="description" name="description" placeholder="Description">
-                      </div>
-                </div>
-
-                <label for="body">*Body</label>
-                <textarea id="body" name="body" placeholder="Write something..." style="height:200px"></textarea>
-
-                <div class="field">
-                  <div class="control">
-                    <label class="label">subject</label>
-                    <select class="input is-primary" name="subject">
-                      <option value="farming">Farming</option>
-                      <option value="gardening">Gardening</option>
-                      <option value="general">General</option>
-                    </select>
-                  </div>
-                </div>
-
-
-                <label class="checkbox">
-                  <br>Do you want to make this post public?
-                      <input type="checkbox"  id="make_public" name="make_public" />
-                </label>
-
-                <br><br><br>
-
-                <div class="field">
-                  <div class="control">
-                    <button class="button is-success is-outlined is-fullwidth" type="submit" value="Publish">Publish</button>&nbsp;
-                  </div>
-                </div>
-
-            </form>
-         </div>
-    </div>
-</body>
-<!--
 <!DOCTYPE html>
 <html>
 <head>
@@ -141,7 +38,6 @@ input[type=submit]:hover {
 
 .container {
   border-radius: 5px;
-  background-color: #f2f2f2;
   padding: 20px;
 }
 </style>
@@ -151,15 +47,23 @@ input[type=submit]:hover {
   <h3>Publish a Post</h3>
 
   <div class="container">
-    <form {% url 'share:create_post' %} method="post">
+    {% if error %}
+       <h3 style="color: red">{{ error }}</h3>
+    {% endif %}
+
+    <form action = "{% url 'share:create_post' %}" method="post">
       {% csrf_token %}
+      <label for="publisher" name='publisher'>Publisher: {{user.username}}</label>
+      <br><br>
+
       <label for="title">Title</label>
       <input type="text" id="title" name="title" placeholder="Title">
 
       <label for="description">Description</label>
       <input type="text" id="description" name="description" placeholder="Description">
 
-      <br><br><br>
+      <label for="body">Body</label>
+      <textarea id="body" name="body" placeholder="Write something..." style="height:200px"></textarea>
 
       <label for="subject">Subject</label>
       <select id="subject" name="subject">
@@ -167,9 +71,6 @@ input[type=submit]:hover {
         <option value="gardening">Gardening</option>
         <option value="general">General</option>
       </select>
-
-      <label for="body">Body</label>
-      <textarea id="body" name="body" placeholder="Write something..." style="height:200px"></textarea>
 
       <label class="checkbox">
         <br>Do you want to make this post public?
@@ -187,6 +88,5 @@ input[type=submit]:hover {
 
 </body>
 </html>
--->
 
 {% endblock %}
