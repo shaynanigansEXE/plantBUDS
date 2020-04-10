@@ -3,6 +3,12 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 
 # Create your models here.
+class PlantTip(models.Model):
+	def __str__(self):
+		return self.title
+
+	tipText = models.CharField(max_length=500)
+	tipTitle = models.CharField(max_length=30)
 
 class PlantBuddy(models.Model):
 	def __str__(self):
