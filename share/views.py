@@ -13,7 +13,7 @@ def index(request):
             user = request.user
             all_posts = Publishing.objects.all()   # all_problems is a list object [   ]
 
-            return render(request, "share/index.html", {"user":user }) #, 'all_posts':all_posts})
+            return render(request, "share/index.html", {"user":user, 'all_posts':all_posts})
         else:
             return redirect("share:login")
     else:
@@ -26,10 +26,10 @@ def dashboard(request):
         if not user.is_authenticated:
             return redirect("share:login")
         else:
-            my_posts = Publishing.objects.filter(plantbuddy=user.plantbuddy.id)   # Posts table has a plantbuddy field (FK)
+            #my_posts = Publishing.objects.filter(plantbuddy=user.plantbuddy.id)   # Posts table has a plantbuddy field (FK)
 
 
-            return render(request, "share/dashboard.html", {'my_posts':my_posts})
+            return render(request, "share/dashboard.html") #, {'my_posts':my_posts})
 
 def signup(request):
     if request.user.is_authenticated:
