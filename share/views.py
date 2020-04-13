@@ -135,7 +135,8 @@ def create_post(request):
         if not user.is_authenticated:
             return redirect("share:login")
 
-        publisher = user.publisher
+        #publisher = user.publisher
+        publisher = user.PlantBuddy
         title = request.POST["title"]
         description = request.POST["description"]
         subject = request.POST["subject"]
@@ -153,7 +154,7 @@ def create_post(request):
             post = Blog.objects.create(publisher=publisher, title=title, description=description, subject=subject, body=body, make_public=make_public)
             post.save()
 
-            post = get_object_or_404(Blog, pk=publisher.id)
+            post = get_object_or_404(Blog, pk=post.id)
 
             return render(request, "share/farmer_posts.html",{"user":user, "post":post})
 
