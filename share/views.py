@@ -91,7 +91,7 @@ def logout_view(request):
     logout(request)
     return redirect("share:login")
 
-def show_posts(request, publisher_id):
+def show_posts(request, plantbuddy_id):
     if request.method == "GET":
         user = request.user
         if not user.is_authenticated:
@@ -101,7 +101,7 @@ def show_posts(request, publisher_id):
             posts = get_object_or_404(Blog, pk=publisher_id)
 
             # Module 6
-            if posts.make_public or posts.publisher.user.id == user.id:
+            if posts.make_public or posts.plantbuddy.user.id == user.id:
                 return render(request, "share/farmer_posts.html",
                 {"user":user, "posts":posts})
             else:
@@ -136,7 +136,7 @@ def create_post(request):
             return redirect("share:login")
 
         #publisher = user.publisher
-        publisher = user.PlantBuddy
+        plantbuddy = user.plantbuddy
         title = request.POST["title"]
         description = request.POST["description"]
         subject = request.POST["subject"]
@@ -151,7 +151,7 @@ def create_post(request):
             return render(request, "share/publish_post.html", {"error":"Please fill in all required fields"})
 
         try:
-            post = Blog.objects.create(publisher=publisher, title=title, description=description, subject=subject, body=body, make_public=make_public)
+            post = Blog.objects.create(plantbuddy=plantbuddy, title=title, description=description, subject=subject, body=body, make_public=make_public)
             post.save()
 
             post = get_object_or_404(Blog, pk=post.id)
@@ -169,13 +169,13 @@ def create_post(request):
 
 
 # Module 6
-def edit_post(request, publisher_id):
+def edit_post(request, plantbuddy_id):
     if request.method == "GET":
         user = request.user
         if not user.is_authenticated:
             return redirect("share:login")
 
-        posts = get_object_or_404(Blog, pk=publisher_id)
+        posts = get_object_or_404(Blog, pk=plantbuddy_id)
 
         if posts.publisher.user.id == user.id:
             return render(request, "share/publish_post.html", {"posts":posts})
@@ -183,14 +183,14 @@ def edit_post(request, publisher_id):
             return render(request, "share/index.html",
             {"error":"You are not the author of the problem that you tried to edit."})
 
-# Module 6
+# Module plantbuddy_id
 def update_post(request, publisher_id):
     if request.method == "POST":
         user = request.user
         if not user.is_authenticated:
             return HttpResponse(status=500)
 
-        posts = get_object_or_404(Blog, pk=publisher_id)
+        posts = get_object_or_404(Blog, pk=plantbuddy_id)
 
         if not request.POST["title"] or not request.POST["description"] or not request.POST["body"]:
             return render(request, "share/publish_post.html", {"posts":posts, "error":"One of the required fields was empty"})
@@ -207,8 +207,8 @@ def update_post(request, publisher_id):
             else:
                 make_public = False
 
-            if posts.publisher.user.id == user.id and not posts.make_public:
-                Blog.objects.filter(pk=problem_id).update(publisher=publisher, title=title, description=description, body=body, make_public=make_public)
+            if posts.plantbuddy.user.id == user.id and not posts.make_public:
+                Blog.objects.filter(pk=plantbuddy_id).update(plantbuddy=plantbuddy, title=title, description=description, body=body, make_public=make_public)
                 return redirect("share:dashboard")
 
             else:
@@ -220,16 +220,16 @@ def update_post(request, publisher_id):
         all_posts = Blog.objects.all()
         return render(request, "share/dashboard.html", {"user":user, "all_posts": all_posts, "error":"Can't update!"})
 
-def delete_post(request, publisher_id):
+def delete_post(request, plantbuddy_id):
     if request.method == "GET":
         user = request.user
         if not user.is_authenticated:
             return HttpResponse(status=500)
 
-        posts = get_object_or_404(Blog, pk=publisher_id)
+        posts = get_object_or_404(Blog, pk=plantbuddy_id)
 
-        if posts.coder.user.id == user.id and not posts.make_public:
-            Blog.objects.get(pk=publisher_id).delete()
+        if posts.plantbuddy.user.id == user.id and not posts.make_public:
+            Blog.objects.get(pk=plantbuddy_id).delete()
             return redirect("share:dashboard")
         else:
             all_posts = Blog.objects.all()

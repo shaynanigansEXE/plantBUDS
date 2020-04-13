@@ -8,10 +8,10 @@
       {% endif %}
 
         <h2 class="title is-2">Posts created by you:
-          <span style="color:blue">{{ all_posts.publisher.user.username }}</span>
+          <span style="color:blue">{{ all_posts.plantbuddy.user.username }}</span>
         </h2>
         <div class="box">
-        {% for p in problem %}
+        {% for p in plantbuddy %}
                 <div class="content"> {{ p.title }}
                   <a class="button is-primary is-small" href="{% url 'share:show_posts' p.id %}">Show more ...</a>
 
