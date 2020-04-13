@@ -19,9 +19,10 @@ class PlantBuddy(models.Model):
 	created = models.DateField(auto_now=True)   # maybe redundant, user model has date_joined
 	updated = models.DateField(auto_now=True)
 
-class Blog(models.Model):
+class Publishing(models.Model):
     def __str__(self):
         return self.title
+
     plantbuddy = models.ForeignKey(PlantBuddy, on_delete=models.CASCADE)
     title = models.CharField(max_length=50, null=False, blank=False, unique=False)
     description = models.TextField(max_length=100, null=False, blank=False, unique=False)

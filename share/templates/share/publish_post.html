@@ -53,8 +53,6 @@ input[type=submit]:hover {
 
     <form action = "{% url 'share:create_post' %}" method="post">
       {% csrf_token %}
-      <label for="publisher" name='publisher'>Publisher: {{user.username}}</label>
-      <br><br>
 
       <label for="title">Title</label>
       <input type="text" id="title" name="title" placeholder="Title">
