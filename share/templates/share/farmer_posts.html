@@ -8,24 +8,21 @@
       {% endif %}
 
         <h2 class="title is-2">Posts created by you:
-          <span style="color:blue">{{ all_posts.plantbuddy.user.username }}</span>
+          <span style="color:blue">{{ user.username }}</span>
         </h2>
-        <div class="box">
-        {% for p in plantbuddy %}
-                <div class="content"> {{ p.title }}
-                  <a class="button is-primary is-small" href="{% url 'share:show_posts' p.id %}">Show more ...</a>
-
-                </div>
-        {% endfor %}
+{% for p in all_posts %}
+        <div class="content"> {{ p.title }}
+          <a class="button is-primary is-small" href="{% url 'share:show_posts' p.id %}">Show more ...</a>
+                                                      <!-- create all_posts route right away -->
         </div>
-
-              <br><br>
-              <a href="{% url 'share:publish_post' %}" class="btn btn-primary btn-lg">Create new post!</a>
-            </div>
-          <br><br>
+{% endfor %}
+      <br><br>
+      <a href="{% url 'share:publish_post' %}" class="btn btn-primary btn-lg">Create new post!</a>
+      <br><br>
 
       </div>
+  </div>
 
-    </div>
-</div>
+
+
 {% endblock %}

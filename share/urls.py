@@ -24,6 +24,4 @@ urlpatterns = [
     path('publish_post', views.publish_post, name='publish_post'),
     path('create_post', views.create_post, name='create_post'),
 
-
-
 ]
