@@ -27,6 +27,10 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <a class="navbar-brand" href="{% url 'share:dashboard' %}">My Dashboard</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      </button>
+
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
@@ -43,20 +47,32 @@
     </div>
   </nav>
 
-  <header class="masthead text-center text-white">
-    <div class="masthead-content">
-      <div class="container">
-        <h1 class="masthead-heading mb-0">plantBUDS</h1>
-        <h2 class="masthead-subheading mb-0">LEARN MORE ABOUT GARDENING</h2>
-        <a class="btn btn-primary btn-xl rounded-pill mt-5" href="{% url 'share:dashboard' %}">Learn More</a>
-      </div>
-    </div>
-  </header>
+
+  <div class="container">
+    <!-- Jumbotron Header -->
+    <header class="jumbotron my-4" style="background-image: url(/static/share/images/unnamed.jpg); background-repeat: no-repeat;">
+      <h1 class="title is-2" style="text-align: center">plantBUDS</h1>
+      <p class="lead" style="text-align: center">LEARN MORE ABOUT PLANTS</p>
+      <a href="{% url 'share:index' %}" class="btn btn-primary btn-lg" style="float: right">Learn More</a>
+    </header>
+  </div>
 
   <section>
     {% block content%}
     {% endblock %}
   </section>
+
+<!--
+  <header class="masthead text-center text-white">
+    <div class="masthead-content">
+      <div class="container">
+        <h1 class="masthead-heading mb-0">plantBUDS</h1>
+        <h2 class="masthead-subheading mb-0">LEARN MORE ABOUT GARDENING</h2>
+        <a class="btn btn-primary btn-xl rounded-pill mt-5" href="{% url 'share:index' %}">Learn More</a>
+      </div>
+    </div>
+  </header>
+-->
 
   <!-- Footer -->
   <footer class="py-5 bg-black">
