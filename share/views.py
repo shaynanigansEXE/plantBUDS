@@ -163,8 +163,8 @@ def update_post(request, plantbuddy_id):
                 make_public = False
 
             if my_posts.plantbuddy.user.id == user.id and not my_posts.make_public:
-                Publishing.objects.filter(pk=plantbuddy_id).update(plantbuddy=plantbuddy, title=title, description=description, body=body, subject=subject, make_public=make_public)
-                return redirect("share:show_posts")
+                Publishing.objects.filter(pk=plantbuddy_id).update(title=title, description=description, body=body, subject=subject, make_public=make_public)
+                return redirect("share:dashboard")
 
             else:
                 return render(request, "share/edit_post.html",{"my_posts":my_posts, "error":"Can't update!"})
