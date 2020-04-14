@@ -1,6 +1,99 @@
 {% extends "share/dashboard.html" %}
 {% block posts %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
 
+h3 {
+  text-align: center;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  padding: 20px;
+}
+</style>
+</head>
+<body>
+  <br><br><br>
+  <h3>Update Post</h3>
+
+  <div class="container">
+    {% if error %}
+       <h3 style="color: red">{{ error }}</h3>
+    {% endif %}
+
+    <form action = "{% url 'share:update_post' 1 %}" method="post">
+      {% csrf_token %}
+
+      <label for="title">Title</label>
+      <input type="text" id="title" name="title" value="{{ my_posts.title }}">
+
+      <label for="description">Description</label>
+      <input type="text" id="description" name="description" value="{{ my_posts.description }}">
+
+      <label for="body">Body</label>
+      <textarea id="body" name="body" value="{{ my_posts.title }}" style="height:200px"></textarea>
+
+      <label for="subject">Subject</label>
+      <select id="subject" name="subject">
+        <option value="farming">Farming</option>
+        <option value="gardening">Gardening</option>
+        <option value="general">General</option>
+      </select>
+
+      <label class="checkbox">
+        <br>Do you want to make this post public?
+        <input type="checkbox"  id="make_public" name="make_public" />
+      </label>
+
+
+      <div class="field" style="float: center;">
+        <div class="control">
+          <button class="button is-success is-outlined is-fullwidth" type="submit" value="Update">Update</button>&nbsp;
+        </div>
+      </div>
+    </form>
+    <h3 class="title is-5">Delete posts {{ posts.title }}</h3>
+    <form action="{% url 'share:delete_post' 1 %}" method="post">
+        {% csrf_token %}
+         <button class="button is-success is-outlined is-fullwidth" type="submit" name="delete" value="Delete">Delete</button>&nbsp;
+         <br><br>
+    </form>
+
+  </div>
+
+</body>
+</html>
+<!--
 <div class="columns">
     <div class="column is-one-fifth">
     </div>
@@ -13,7 +106,7 @@
 
       <h4 class="title is-5"> Update your post!</h4>
 
-      <form action="{% url 'share:update_post' plantbuddy.id %}" method="post">
+      <form action="{% url 'share:update_post' 1 %}" method="post">
         {% csrf_token %}
 
         <div class="field">
@@ -51,12 +144,6 @@
           </div>
         </div>
 
-        <!--
-        <hr> ######### testing ########  <br>
-        make_public: {{posts.make_public}} <br>
-        #################################### <br>
-        -->
-
         <label class="checkbox">
             {% if posts.make_public %}
               <br>This post is Public!
@@ -77,16 +164,16 @@
         </div>
 
         </form>
+        <br><br>
 
         <h3 class="title is-5">Delete posts {{ posts.title }}</h3>
-        <form action="#" method="post">
+        <form action="{% url 'share:delete_post' 1 %}" method="post">
             {% csrf_token %}
              <button class="button is-danger is-outlined is-fullwidth" type="submit" name="delete" value="Delete">Delete</button>&nbsp;
-
+             <br><br>
         </form>
 
 </div>
-<div class="column ">
-</div>
+-->
 
 {% endblock %}

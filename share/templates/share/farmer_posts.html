@@ -13,7 +13,7 @@
 {% for p in all_posts %}
         <div class="content"> {{ p.title }}
           <a class="button is-primary is-small" href="{% url 'share:show_posts' p.id %}">Show more ...</a>
-                                                      <!-- create all_posts route right away -->
+          <br><br>                                            <!-- create all_posts route right away -->
         </div>
 {% endfor %}
       <br><br>
