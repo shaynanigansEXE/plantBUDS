@@ -17,7 +17,6 @@ DEBUG = True
 # ALLOWED_HOSTS = ["localhost", 'https://git.heroku.com/plant-buds.git']
 ALLOWED_HOSTS = ['https://plant-buds.herokuapp.com/']
 
-
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',

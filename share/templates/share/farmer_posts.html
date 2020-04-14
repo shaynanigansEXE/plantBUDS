@@ -1,0 +1,28 @@
+{% extends "share/dashboard.html" %}
+{% block posts %}
+<div class="columns">
+    <div class="column">
+
+      {% if error %}
+        <h3 class="title is-3" style="color: red">{{ error }}</h3>
+      {% endif %}
+
+        <h2 class="title is-2">Posts created by you:
+          <span style="color:blue">{{ user.username }}</span>
+        </h2>
+{% for p in all_posts %}
+        <div class="content"> {{ p.title }}
+          <a class="button is-primary is-small" href="{% url 'share:show_posts' p.id %}">Show more ...</a>
+                                                      <!-- create all_posts route right away -->
+        </div>
+{% endfor %}
+      <br><br>
+      <a href="{% url 'share:publish_post' %}" class="btn btn-primary btn-lg">Create new post!</a>
+      <br><br>
+
+      </div>
+  </div>
+
+
+
+{% endblock %}
