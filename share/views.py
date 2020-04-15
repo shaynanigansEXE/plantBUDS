@@ -18,7 +18,6 @@ def index(request):
     else:
         return HttpResponse(status=500)
 
-
 def dashboard(request):
     if request.method == "GET":
         user = request.user
@@ -32,6 +31,18 @@ def dashboard(request):
             print('*******************************')
 
             return render(request, "share/dashboard.html", {'my_posts':my_posts})
+
+def info_page(request):
+    # request for user authentication
+    if request.method == "GET":
+        if request.user.is_authenticated:
+            user = request.user
+
+            return render(request, "share/info_page.html", {"user":user})
+        else:
+            return redirect("share:login")
+    else:
+        return HttpResponse(status=500)
 
 def signup(request):
     if request.user.is_authenticated:

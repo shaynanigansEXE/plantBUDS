@@ -6,7 +6,7 @@ app_name = 'share'
 urlpatterns = [
     # Most redirects lead here if user has been authenticated
     path('', views.index, name='index'),
-
+    path('', views.info_page, name='info_page'),
     # authentication: signup, login, logout
     path('create', views.create, name='create'),
     path('loguser', views.login_user, name='loguser'),
@@ -23,5 +23,6 @@ urlpatterns = [
 
     path('publish_post', views.publish_post, name='publish_post'),
     path('create_post', views.create_post, name='create_post'),
+
 
 ]
