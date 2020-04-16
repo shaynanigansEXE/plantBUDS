@@ -1,25 +1,5 @@
 {% extends "share/base.html" %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>Blog Home</title>
-
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
-  <link href="css/blog-home.css" rel="stylesheet">
-
-</head>
-
 <body>
 
   <!-- Page Content -->
@@ -48,41 +28,13 @@
         </div>
 {% endfor %}
 
-        <!-- Blog Post
-        <div class="card mb-4">
-          <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-          <div class="card-body">
-            <h2 class="card-title">Post Title</h2>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-            <a href="#" class="btn btn-primary">Read More &rarr;</a>
-          </div>
-          <div class="card-footer text-muted">
-            Posted on January 1, 2017 by
-            <a href="#">Start Bootstrap</a>
-          </div>
-        </div>
-
-        <!-- Blog Post
-        <div class="card mb-4">
-          <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-          <div class="card-body">
-            <h2 class="card-title">Post Title</h2>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-            <a href="#" class="btn btn-primary">Read More &rarr;</a>
-          </div>
-          <div class="card-footer text-muted">
-            Posted on January 1, 2017 by
-            <a href="#">Start Bootstrap</a>
-          </div>
-        </div>
-
         <!-- Pagination -->
         <ul class="pagination justify-content-center mb-4">
-          <li class="page-item">
-            <a class="page-link" href="#">&larr; Older</a>
-          </li>
           <li class="page-item disabled">
-            <a class="page-link" href="#">Newer &rarr;</a>
+            <a class="page-link" href="#">&larr;Newer </a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#">Older&rarr; </a>
           </li>
         </ul>
 
@@ -96,127 +48,8 @@
 
   </div>
   <!-- /.container -->
-
-  <header class="jumbotron my-4" style="text-align: center">
-    <h1 class="title is-2"> More About Us!</h1>
-  </header>
-
-  <section>
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6 order-lg-2">
-          <div class="p-5">
-            <img class="img-fluid rounded-circle" src="/static/share/images/farm.jpg" alt="icon">
-          </div>
-        </div>
-        <div class="col-lg-6 order-lg-1">
-          <div class="p-5">
-            <h2 class="display-4">Farmers and Gardeners!</h2>
-            <p>Learn different techniques or way to plant different plants and veggies!</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6">
-          <div class="p-5">
-            <img class="img-fluid rounded-circle" src="/static/share/images/plant.jpg" alt="">
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="p-5">
-            <h2 class="display-4">Trade seeds!</h2>
-            <p>Trade seeds with friends or have a gardening party to hang out and plants and trade seeds!</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6 order-lg-2">
-          <div class="p-5">
-            <img class="img-fluid rounded-circle" src="/static/share/images/veggies.jpg" alt="">
-          </div>
-        </div>
-        <div class="col-lg-6 order-lg-1">
-          <div class="p-5">
-            <h2 class="display-4">Garden party!</h2>
-            <p>Plan a garden party within your community and gain knowledge on other peoples favorite types of seeds or just plant for fun!</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
 </body>
 
 </html>
 
-
-<!--
-<header class="jumbotron my-4" style="text-align: center">
-  <h1 class="title is-2"> More About Us!</h1>
-</header>
-
-<section>
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-lg-6 order-lg-2">
-        <div class="p-5">
-          <img class="img-fluid rounded-circle" src="/static/share/images/farm.jpg" alt="icon">
-        </div>
-      </div>
-      <div class="col-lg-6 order-lg-1">
-        <div class="p-5">
-          <h2 class="display-4">Farmers and Gardeners!</h2>
-          <p>Learn different techniques or way to plant different plants and veggies!</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-lg-6">
-        <div class="p-5">
-          <img class="img-fluid rounded-circle" src="/static/share/images/plant.jpg" alt="">
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="p-5">
-          <h2 class="display-4">Trade seeds!</h2>
-          <p>Trade seeds with friends or have a gardening party to hang out and plants and trade seeds!</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-lg-6 order-lg-2">
-        <div class="p-5">
-          <img class="img-fluid rounded-circle" src="/static/share/images/veggies.jpg" alt="">
-        </div>
-      </div>
-      <div class="col-lg-6 order-lg-1">
-        <div class="p-5">
-          <h2 class="display-4">Garden party!</h2>
-          <p>Plan a garden party within your community and gain knowledge on other peoples favorite types of seeds or just plant for fun!</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
--->
-{% endblock content %}
+{% endblock  %}

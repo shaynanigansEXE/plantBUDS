@@ -196,7 +196,7 @@ def delete_post(request, plantbuddy_id):
 
         if my_posts.plantbuddy.user.id == user.id and not my_posts.make_public:
             Publishing.objects.get(pk=plantbuddy_id).delete()
-            return redirect("share:show_posts")
+            return redirect("share:dashboard")
         else:
             all_posts = Publishing.objects.all()
             return render(request, "share/index.html", {"user":user, "all_posts": all_posts, "error":"Can't delete!"})

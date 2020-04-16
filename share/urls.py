@@ -14,6 +14,7 @@ urlpatterns = [
     path('logout', views.logout_view, name='logout'),
     path('signup', views.signup, name='signup'),
     path('dashboard', views.dashboard, name='dashboard'),
+    path('info_page', views.info_page, name='info_page'),
 
     path('all_posts', views.farmer_posts, name='farmer_posts'),
     path('posts/<int:plantbuddy_id>/show', views.show_posts, name='show_posts'),
