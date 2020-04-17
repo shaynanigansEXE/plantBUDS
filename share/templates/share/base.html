@@ -21,6 +21,7 @@
 
 <body>
   <!-- Navigation -->
+
   <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
     <div class="container">
       <a class="navbar-brand" href="{% url 'share:index' %}">plantBUDS</a>
@@ -28,8 +29,6 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <a class="navbar-brand" href="{% url 'share:dashboard' %}">My Dashboard</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      </button>
 
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
@@ -47,13 +46,12 @@
     </div>
   </nav>
 
-
   <div class="container">
     <!-- Jumbotron Header -->
     <header class="jumbotron my-4" style="background-image: url(/static/share/images/unnamed.jpg); background-repeat: no-repeat;">
       <h1 class="title is-2" style="text-align: center">plantBUDS</h1>
       <p class="lead" style="text-align: center">LEARN MORE ABOUT PLANTS</p>
-      <a href="{% url 'share:index' %}" class="btn btn-primary btn-lg" style="float: right">Learn More</a>
+      <a href="{% url 'share:info_page' %}" class="btn btn-primary btn-lg" style="float: right">Learn More</a>
     </header>
   </div>
 

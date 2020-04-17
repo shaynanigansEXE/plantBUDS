@@ -1,61 +1,48 @@
 {% extends "share/base.html" %}
 {% block content %}
+<body>
 
-<header class="jumbotron my-4" style="text-align: center">
-  <h1 class="title is-2"> More About Us!</h1>
-</header>
-
-<section>
+  <!-- Page Content -->
   <div class="container">
-    <div class="row align-items-center">
-      <div class="col-lg-6 order-lg-2">
-        <div class="p-5">
-          <img class="img-fluid rounded-circle" src="/static/share/images/farm.jpg" alt="icon">
-        </div>
-      </div>
-      <div class="col-lg-6 order-lg-1">
-        <div class="p-5">
-          <h2 class="display-4">Farmers and Gardeners!</h2>
-          <p>Learn different techniques or way to plant different plants and veggies!</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section>
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-lg-6">
-        <div class="p-5">
-          <img class="img-fluid rounded-circle" src="/static/share/images/plant.jpg" alt="">
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="p-5">
-          <h2 class="display-4">Trade seeds!</h2>
-          <p>Trade seeds with friends or have a gardening party to hang out and plants and trade seeds!</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    <div class="row">
 
-<section>
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-lg-6 order-lg-2">
-        <div class="p-5">
-          <img class="img-fluid rounded-circle" src="/static/share/images/veggies.jpg" alt="">
+      <!-- Blog Entries Column -->
+      <div class="col-md-8">
+
+        <h1 class="my-4">plantBUDS Blog</h1>
+
+{% for p in all_posts %}
+        <!-- Blog Post -->
+        <div class="card mb-4">
+          <div class="card-body">
+            <h2 class="card-title">{{ p.title }}</h2>
+            <p class="card-text">{{ p.description }}</p>
+
+            <a href="{% url 'share:show_posts' p.id %}" class="btn btn-primary">Read More &rarr;</a>
+          </div>
+          <div class="card-footer text-muted">
+            {{ p.created }}
+            <a href="#">{{ user.username }}</a>
+          </div>
         </div>
+{% endfor %}
+
+        <!-- Pagination -->
+        <ul class="pagination justify-content-center mb-4">
+          <li class="page-item disabled">
+            <a class="page-link" href="#">&larr;Newer </a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#">Older&rarr; </a>
+          </li>
+        </ul>
+
       </div>
-      <div class="col-lg-6 order-lg-1">
-        <div class="p-5">
-          <h2 class="display-4">Garden party!</h2>
-          <p>Plan a garden party within your community and gain knowledge on other peoples favorite types of seeds or just plant for fun!</p>
-        </div>
+
+
       </div>
+
     </div>
-  </div>
-</section>
+    <!-- /.row -->
 {% endblock %}
