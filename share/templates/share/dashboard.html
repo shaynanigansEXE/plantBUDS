@@ -1,3 +1,4 @@
+
 {% extends "share/base.html" %}
 {% block content %}
   <!-- Page Content -->
@@ -12,12 +13,7 @@
       <a href="{% url 'share:farmer_posts' %}" class="btn btn-primary btn-lg">Show your posts!</a>
     </header>
 
-    <section>
-      {% block posts %}
-      {% endblock %}
-    </section>
-
   </div>
   <!-- /.container -->
 
-{% endblock %}
+{% endblock content%}

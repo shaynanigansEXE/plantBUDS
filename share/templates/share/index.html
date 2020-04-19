@@ -1,6 +1,6 @@
+
 {% extends "share/base.html" %}
 {% block content %}
-<body>
 
   <!-- Page Content -->
   <div class="container">
@@ -8,11 +8,11 @@
     <div class="row">
 
       <!-- Blog Entries Column -->
-      <div class="col-md-8">
+      <div class="col-md-10">
 
         <h1 class="my-4">plantBUDS Blog</h1>
 
-{% for p in all_posts %}
+        {% for p in all_posts %}
         <!-- Blog Post -->
         <div class="card mb-4">
           <div class="card-body">
@@ -26,8 +26,7 @@
             <a href="#">{{ user.username }}</a>
           </div>
         </div>
-{% endfor %}
-
+        {% endfor %}
         <!-- Pagination -->
         <ul class="pagination justify-content-center mb-4">
           <li class="page-item disabled">
@@ -37,12 +36,8 @@
             <a class="page-link" href="#">Older&rarr; </a>
           </li>
         </ul>
-
       </div>
-
-
       </div>
-
     </div>
     <!-- /.row -->
 {% endblock %}
