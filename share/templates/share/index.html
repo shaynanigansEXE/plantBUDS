@@ -11,7 +11,7 @@
 
         <h1 class="my-4">plantBUDS Blog</h1>
 
-        {% for p in all_posts %}
+{% for p in all_posts %}
         <!-- Blog Post -->
         <div class="card mb-4">
           <div class="card-body">
@@ -22,10 +22,10 @@
           </div>
           <div class="card-footer text-muted">
             {{ p.created }}
-            <a href="#">{{ user.username }}</a>
+            <a href="#">{{ p.plantbuddy.user.username }}</a>
           </div>
         </div>
-        {% endfor %}
+{% endfor %}
         <!-- Pagination -->
         <ul class="pagination justify-content-center mb-4">
           <li class="page-item disabled">

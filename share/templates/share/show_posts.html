@@ -45,7 +45,7 @@
         <!-- Author -->
         <p class="lead">
           by
-          <a href="#"> {{ plantbuddy.user.username }} </a>
+          <a href="#"> {{ user.username }} </a>
         </p>
 
         <hr>
@@ -59,11 +59,11 @@
         <p class="lead"> {{ my_posts.body }} </p>
 
         <hr>
-        <br><br>
         {% if user.id == my_posts.plantbuddy.user.id and not my_posts.make_public  %}
           <a class="button is-primary is-medium"
              href="{% url 'share:edit_post' 1 %}" >Make changes to this problem ... </a>
         {% endif %}
+        <br><br>
         <br><br>
 
       </div>
