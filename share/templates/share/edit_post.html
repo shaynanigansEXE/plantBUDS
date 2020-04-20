@@ -55,13 +55,13 @@ input[type=submit]:hover {
       {% csrf_token %}
 
       <label for="title">Title</label>
-      <input type="text" id="title" name="title" value="{{ my_posts.title }}">
+      <input type="text" id="title" name="title" value="{{ my_post.title }}">
 
       <label for="description">Description</label>
-      <input type="text" id="description" name="description" value="{{ my_posts.description }}">
+      <input type="text" id="description" name="description" value="{{ my_post.description }}">
 
-      <label for="body">Body</label>
-      <textarea id="body" name="body" style="height:200px"> {{ my_posts.body }}</textarea>
+      <label for="body">Body</label>      
+      <textarea id="body" name="body" style="height:200px">{{my_post.body}}</textarea>
 
       <label for="subject">Subject</label>
       <select id="subject" name="subject">
