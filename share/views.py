@@ -50,12 +50,7 @@ def create(request):
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
-        farm_pro = request.POST['farm_pro_checkbox']
-
-        # # Had to make modifications because unchecked checkbox was throwing errors when submitting form
-        # farm_pro = True
-        # if request.POST.get and 'farm_pro' in request.POST and request.POST['farm_pro_checkbox'] == "False":
-        #     farm_pro = False
+        farm_pro = True
 
         if username is not None and email is not None and password is not None: # checking that they are not None
             if not username or not email or not password: # checking that they are not empty
