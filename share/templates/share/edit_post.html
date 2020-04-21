@@ -51,17 +51,17 @@ input[type=submit]:hover {
        <h3 style="color: red">{{ error }}</h3>
     {% endif %}
 
-    <form action = "{% url 'share:update_post' 1 %}" method="post">
+    <form action="{% url 'share:update_post' plantbuddy.id %}" method="post">
       {% csrf_token %}
 
       <label for="title">Title</label>
-      <input type="text" id="title" name="title" value="{{ my_post.title }}">
+      <input type="text" id="title" name="title" value="{{ posts.title }}">
 
       <label for="description">Description</label>
-      <input type="text" id="description" name="description" value="{{ my_post.description }}">
+      <input type="text" id="description" name="description" value="{{ posts.description }}">
 
-      <label for="body">Body</label>      
-      <textarea id="body" name="body" style="height:200px">{{my_post.body}}</textarea>
+      <label for="body">Body</label>
+      <textarea id="body" name="body" style="height:200px">{{ posts.body }}</textarea>
 
       <label for="subject">Subject</label>
       <select id="subject" name="subject">
@@ -83,7 +83,7 @@ input[type=submit]:hover {
       </div>
     </form>
     <br><br>
-    <h3 class="title is-5">Delete Post: {{ my_posts.title }}</h3>
+    <h3 class="title is-5">Delete Post: {{ posts.title }}</h3>
     <form action="{% url 'share:delete_post' 1 %}" method="post" style="text-align: center;">
         {% csrf_token %}
          <button class="button is-danger is-outlined is-fullwidth" type="submit" name="delete" value="Delete">Delete</button>&nbsp;
@@ -117,14 +117,14 @@ input[type=submit]:hover {
           <div class="field">
             <div class="control">
               <label class="label">*Post title</label>
-              <input class="input is-primary" value="{{ my_posts.title }}" type="text" name="title">
+              <input class="input is-primary" value="{{ posts.title }}" type="text" name="title">
             </div>
           </div>
 
           <div class="field">
                 <div class="control">
                   <label class="label">*Description</label>
-                  <textarea class="input is-primary" name="description" namerows="4" cols="50" >{{my_posts.description }}
+                  <textarea class="input is-primary" name="description" namerows="4" cols="50" >{{posts.description }}
                   </textarea>
                 </div>
           </div>
@@ -132,7 +132,7 @@ input[type=submit]:hover {
           <div class="field">
                 <div class="control">
                   <label class="label">*Body</label>
-                  <textarea class="input is-primary" name="description" namerows="4" cols="50" >{{my_posts.body }}
+                  <textarea class="input is-primary" name="description" namerows="4" cols="50" >{{posts.body }}
                   </textarea>
                 </div>
           </div>

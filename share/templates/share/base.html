@@ -34,6 +34,9 @@
       </button>
       <div class="navbarContainer collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="dashboard">Dashboard</a>
+          </li>
           {% if request.path == "/login" or request.path == "/loguser" %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'share:signup' %}">Signup</a>
