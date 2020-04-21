@@ -238,7 +238,7 @@ def create_post(request):
 
             post = get_object_or_404(Publishing, pk=plantbuddy.id)
 
-            return render(request, "share/farmer_posts.html",{"user":user, "post":post})
+            return render(request, "share/show_posts.html",{"user":user, "post":post})
 
         except:
             return render(request, "share/publish_post.html", {"error":"Can't create the problem"})
