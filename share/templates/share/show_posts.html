@@ -1,0 +1,102 @@
+{% extends "share/dashboard.html" %}
+{% block posts %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Blog Post</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/blog-post.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <div class="row">
+
+      <!-- Post Content Column -->
+      <div class="col-lg-8">
+
+        <!-- Title -->
+        <h1 class="mt-4">{{ my_posts.title }}</h1>
+
+        <!-- description -->
+        <h3 class='mt-4'> {{ my_posts.description }} </h3>
+
+        <!-- subject -->
+        <p class="lead">
+          Subject:
+          <a href="#">{{ my_posts.subject }} </a>
+        </p>
+
+        <!-- Author -->
+        <p class="lead">
+          by
+          <a href="#"> {{ user.username }} </a>
+        </p>
+
+        <hr>
+
+        <!-- Date/Time -->
+        <p> {{  my_posts.created }} </p>
+
+        <hr>
+
+        <!-- Post Content -->
+        <p class="lead"> {{ my_posts.body }} </p>
+
+        <hr>
+        {% if user.id == my_posts.plantbuddy.user.id and not my_posts.make_public  %}
+          <a class="button is-primary is-medium"
+             href="{% url 'share:edit_post' 1 %}" >Make changes to this problem ... </a>
+        {% endif %}
+        <br><br>
+        <br><br>
+
+      </div>
+    </div>
+  </div>
+  <!-- /.container -->
+</body>
+
+</html>
+
+{% endblock %}
+
+
+<!--
+    <div class="columns">
+        <div class="column">
+          <div class="box">
+              <div class="content">
+
+                  Title: {{ my_posts.title }} <br><br>
+                  Description: {{ my_posts.description }} <br><br>
+                  Body: {{ my_posts.body }} <br><br>
+                  Subject: {{ my_posts.subject }} <br><br>
+                  Created on {{ my_posts.created }} <br><br>
+
+                  {% if my_posts.make_public %}
+                    This post is public! <br><br>
+                  {% else %}
+                    This post is private!<br><br>
+                  {% endif %}
+
+              </div>
+          </div>
+        </div>
+    </div>
+-->

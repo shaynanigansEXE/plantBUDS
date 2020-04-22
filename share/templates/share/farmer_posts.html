@@ -1,0 +1,48 @@
+{% extends "share/dashboard.html" %}
+{% block posts %}
+<div class="columns">
+    <div class="column">
+
+      {% if error %}
+        <h3 class="title is-3" style="color: red">{{ error }}</h3>
+      {% endif %}
+
+        <h2 class="title is-2">Posts created by you:
+          <span style="color:blue">{{ user.username }}</span>
+        </h2>
+        <!-- Page Content -->
+        <div class="container">
+
+          <div class="row">
+
+            <!-- Blog Entries Column -->
+            <div class="col-md-8">
+      {% for p in my_posts %}
+              <!-- Blog Post -->
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h2 class="card-title">{{ p.title }}</h2>
+                  <p class="card-text">{{ p.description }}</p>
+
+                  <a href="{% url 'share:show_posts' p.id %}" class="btn btn-primary">Read More &rarr;</a>
+                </div>
+                <div class="card-footer text-muted">
+                  {{ p.created }}
+                </div>
+              </div>
+      {% endfor %}
+            </div>
+
+
+          </div>
+
+        </div>
+          <!-- /.row -->
+
+  </div>
+      <br><br>
+</div>
+
+
+
+{% endblock %}

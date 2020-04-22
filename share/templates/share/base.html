@@ -1,7 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -10,48 +12,53 @@
   <title>plantBUDS</title>
   {% load static %}
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" type="text/css" href="{% static 'share/startbootstrap/vendor/bootstrap/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'share/startbootstrap/vendor/bootstrap/css/bootstrap.min.css' %}"/>
+
   <!-- Custom fonts for this template -->
+  <link rel="stylesheet" type="text/css" href="{% static 'share/startbootstrap/css/one-page-wonder.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'share/startbootstrap/css/one-page-wonder.css' %}"/>
+
   <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
 
-  <!-- Custom styles for this template -->
-  <link rel="stylesheet" type="text/css" href="{% static 'share/startbootstrap/css/one-page-wonder.min.css' %}">
 </head>
 
 <body>
+
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top" style="background-color: rgba(255,255,255,0);">
     <div class="container">
-      <a class="navbar-brand" href="{% url 'share:index' %}">plantBUDS</a>
+      <a class="navbar-brand" href="{% url 'share:index' %}"><div class="navText" style="font-size:25px;">plantBUDS</div></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
+      <div class="navbarContainer collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'share:signup' %}">Signup</a>
+            <a class="nav-link" href="dashboard">Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'share:login' %}">Login</a>
+            <a class="nav-link" href="signup">Sign Up</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'share:logout' %}">Logout</a>
+            <a class="nav-link" href="login">Log In</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="logout">Logout</a>
+          </li>
+
         </ul>
       </div>
     </div>
   </nav>
 
-  <header class="masthead text-center text-white">
-    <div class="masthead-content">
-      <div class="container">
-        <h1 class="masthead-heading mb-0">plantBUDS</h1>
-        <h2 class="masthead-subheading mb-0">LEARN MORE ABOUT GARDENING</h2>
-        <a class="btn btn-primary btn-xl rounded-pill mt-5" href="{% url 'share:dashboard' %}">Learn More</a>
-      </div>
-    </div>
-  </header>
+  <div class="container">
+    <header class="jumbotron my-4" style="background-image: url('/static/share/images/unnamed.jpg'); background-repeat: no-repeat;">
+      <h1 class="title is-2" style="text-align: center">plantBUDS</h1>
+      <p class="lead" style="text-align: center">LEARN MORE ABOUT PLANTS</p>
+      <a href="{% url 'share:info_page' %}" class="btn btn-primary btn-lg" style="float: right">Learn More</a>
+    </header>
+  </div>
 
   <section>
     {% block content%}
@@ -61,14 +68,14 @@
   <!-- Footer -->
   <footer class="py-5 bg-black">
     <div class="container">
-      <p class="m-0 text-center text-white small">Copyright &copy; Your Website 2019</p>
+      <p class="m-0 text-center text-white small">Copyright &copy; PlantBuds 2020</p>
     </div>
     <!-- /.container -->
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %} "></script>
+  <script src="../static/share/startbootstrap/vendor/jquery/jquery.min.js"></script>
+  <script src="../static/share/startbootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

@@ -1,157 +1,42 @@
-<<<<<<< HEAD
 {% extends "share/base.html" %}
-
 {% block content %}
-<section>
+
+  <!-- Page Content -->
   <div class="container">
-    <div class="row align-items-center">
-      <div class="col-lg-6 order-lg-2">
-        <div class="p-5">
-          <img class="img-fluid rounded-circle" src="/static/share/images/farm.jpg" alt="icon">
-=======
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
+    <div class="row">
 
-  <style>
+      <!-- Blog Entries Column -->
+      <div class="col-md-10">
 
+        <h1 class="my-4">plantBUDS Blog</h1>
 
-  </style>
+{% for p in all_posts %}
+        <!-- Blog Post -->
+        <div class="card mb-4">
+          <div class="card-body">
+            <h2 class="card-title">{{ p.title }}</h2>
+            <p class="card-text">{{ p.description }}</p>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>plantBUDS</title>
-  {% load static %}
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" type="text/css" href="{% static 'share/startbootstrap/vendor/bootstrap/css/bootstrap.min.css' %}"/>
-
-  <!-- Custom fonts for this template -->
-  <link rel="stylesheet" type="text/css" href="{% static 'share/startbootstrap/css/one-page-wonder.css' %}"/>
-
-  <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
-  <!-- <link rel="stylesheet" type="text/css" href="{% static 'share/main.css' %}"/> -->
-  <link rel="stylesheet" type="text/css" href="{% static 'share/startbootstrap/css/one-page-wonder.min.css' %}">
-  <!-- <link href="css/one-page-wonder.min.css" rel="stylesheet"> -->
-
-</head>
-
-<body>
-
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="{% url 'share:index' %}"><div class="navText">plantBUDS</div></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="navbarContainer collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="dashboard">Dashboard</a>
+            <a href="{% url 'share:show_posts' p.id %}" class="btn btn-primary">Read More &rarr;</a>
+          </div>
+          <div class="card-footer text-muted">
+            {{ p.created }}
+            <a href="#">{{ p.plantbuddy.user.username }}</a>
+          </div>
+        </div>
+{% endfor %}
+        <!-- Pagination -->
+        <ul class="pagination justify-content-center mb-4">
+          <li class="page-item disabled">
+            <a class="page-link" href="#">&larr;Newer </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="signup">Sign Up</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="login">Log In</a>
+          <li class="page-item">
+            <a class="page-link" href="#">Older&rarr; </a>
           </li>
         </ul>
       </div>
-    </div>
-  </nav>
-
-  <header class="masthead text-center text-white">
-    <div class="masthead-content">
-      <div class="container">
-        <h1 class="masthead-heading mb-0">plantBUDS</h1>
-        <h2>LEARN MORE ABOUT GARDENING</h2>
-        <a href="#" class="button btn-xl">Learn More</a>
       </div>
     </div>
-
-  </header>
-
-  <section>
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6 order-lg-2">
-          <div class="p-5">
-            <img class="img-fluid rounded-circle" src="{% static 'share/startbootstrap/img/farm_scene.jpg' %}" alt="icon">
-          </div>
->>>>>>> SignUp
-        </div>
-      </div>
-      <div class="col-lg-6 order-lg-1">
-        <div class="p-5">
-          <h2 class="display-4">Farmers and Gardeners!</h2>
-          <p>Learn to garden within your community or travel to others!</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-lg-6">
-        <div class="p-5">
-          <img class="img-fluid rounded-circle" src="/static/share/images/plant.jpg" alt="">
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="p-5">
-          <h2 class="display-4">Trade seeds!</h2>
-          <p>Trade seeds with friends or have a gardening party to hang out and plants and trade seeds!</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-lg-6 order-lg-2">
-        <div class="p-5">
-          <img class="img-fluid rounded-circle" src="/static/share/images/veggies.jpg" alt="">
-        </div>
-      </div>
-      <div class="col-lg-6 order-lg-1">
-        <div class="p-5">
-          <h2 class="display-4">Garden party!</h2>
-          <p>Plan a garden party within your community and gain knowledge on other peoples favorite types of seeds or just plant for fun!</p>
-        </div>
-      </div>
-    </div>
-<<<<<<< HEAD
-  </div>
-</section>
-
-{% endblock content %}
-=======
-  </section>
-
-  <!-- Footer -->
-  <footer class="py-5 bg-black">
-    <div class="container">
-      <p class="m-0 text-center text-white small">Copyright &copy; PlantBuds 2020</p>
-    </div>
-    <!-- /.container -->
-  </footer>
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="../static/share/startbootstrap/vendor/jquery/jquery.min.js"></script>
-  <script src="../static/share/startbootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-</body>
-
-</html>
->>>>>>> SignUp
+    <!-- /.row -->
+{% endblock %}
