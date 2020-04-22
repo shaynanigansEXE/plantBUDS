@@ -18,7 +18,7 @@
             <h2 class="card-title">{{ p.title }}</h2>
             <p class="card-text">{{ p.description }}</p>
 
-            <a href="{% url 'share:show_posts' p.id %}" class="btn btn-primary">Read More &rarr;</a>
+            <a href="{% url 'share:show_posts_index' p.id %}" class="btn btn-primary">Read More &rarr;</a>
           </div>
           <div class="card-footer text-muted">
             {{ p.created }}

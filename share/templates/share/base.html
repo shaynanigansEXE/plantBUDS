@@ -35,8 +35,19 @@
       <div class="navbarContainer collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="dashboard">Dashboard</a>
+            <a class="nav-link" href="dashboard">My Dashboard</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="signup">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login">Log In</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="logout">Logout {{user.username}}</a>
+          </li>
+
+<!--
           {% if request.path == "/login" or request.path == "/loguser" %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'share:signup' %}">Signup</a>
@@ -45,12 +56,12 @@
            <li class="nav-item">
              <a class="nav-link" href="{% url 'share:login' %}">Login</a>
           </li>
-          {% else   %}
+          {% else %}
           <li class="nav-item">
               <a class="nav-link" href="{% url 'share:logout' %}">Logout {{user.username }}</a>
           </li>
           {% endif %}
-<!--
+
           <li class="nav-item">
             <a class="nav-link" href="dashboard">Dashboard</a>
           </li>
