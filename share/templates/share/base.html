@@ -35,16 +35,17 @@
       <div class="navbarContainer collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="dashboard">My Dashboard</a>
+            # These nav link URLs have to follow this format since other pages extend base.html
+            <a class="nav-link" href="{% url 'share:dashboard' %}">My Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="signup">Sign Up</a>
+            <a class="nav-link" href="{% url 'share:signup' %}">Sign Up</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="login">Log In</a>
+            <a class="nav-link" href="{% url 'share:login' %}">Log In</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="logout">Logout {{user.username}}</a>
+            <a class="nav-link" href="{% url 'share:logout' %}">Logout {{user.username}}</a>
           </li>
 
 <!--

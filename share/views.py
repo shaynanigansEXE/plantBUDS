@@ -179,8 +179,9 @@ def create_post(request):
             my_posts = Publishing.objects.create(plantbuddy=plantbuddy, title=title, description=description, body=body, subject=subject, make_public=make_public)
             my_posts.save()
 
-            my_posts = get_object_or_404(Publishing, pk=plantbuddy.id)
+            my_posts = get_object_or_404(Publishing, pk=my_posts.id)
 
+            # Fixed the create_post valueError --> changed references to plantbuddy to my_posts
             return render(request, "share/dashboard.html",{"user":user, "my_posts":my_posts})
 
         except:
@@ -252,15 +253,15 @@ def update_post(request, plantbuddy_id):
         all_posts = Publishing.objects.all()
         return render(request, "share/index.html", {"user":user, "all_posts": all_posts, "error":"Can't update!"})
 
-def delete_post(request, plantbuddy_id):
+def delete_post(request, my_posts_id):
     if request.method == "GET":
         user = request.user
         if not user.is_authenticated:
             return HttpResponse(status=500)
 
-        my_posts = get_object_or_404(Publishing, pk=plantbuddy_id)
+        my_posts = get_object_or_404(Publishing, pk=my_posts_id)
 
-        if my_posts.plantbuddy.user.id == user.id and not my_posts.make_public:
+        if my_posts.plantbuddy.user.id == user.id:
             Publishing.objects.get(pk=plantbuddy_id).delete()
             return redirect("share:dashboard")
         else:
