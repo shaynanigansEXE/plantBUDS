@@ -39,14 +39,18 @@
             <a class="nav-link" href="{% url 'share:dashboard' %}">My Dashboard</a>
           </li>
           <li class="nav-item">
+            {% if request.path == "/login" or request.path == "/loguser" %}
             <a class="nav-link" href="{% url 'share:signup' %}">Sign Up</a>
           </li>
           <li class="nav-item">
+            {% elif request.path == "/signup"  %}
             <a class="nav-link" href="{% url 'share:login' %}">Log In</a>
           </li>
           <li class="nav-item">
+            {% else   %}
             <a class="nav-link" href="{% url 'share:logout' %}">Logout {{user.username}}</a>
           </li>
+          {% endif %}
 
 <!--
           {% if request.path == "/login" or request.path == "/loguser" %}
