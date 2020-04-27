@@ -9,7 +9,7 @@
       <!-- Blog Entries Column -->
       <div class="col-md-10">
 
-        <h1 class="my-4">plantBUDS Blog</h1>
+        <h1 class="my-4" style="color: rgb(214, 121, 0);">plantBUDS Blog</h1>
 
 {% for p in all_posts %}
         <!-- Blog Post -->
@@ -18,7 +18,7 @@
             <h2 class="card-title">{{ p.title }}</h2>
             <p class="card-text">{{ p.description }}</p>
 
-            <a href="{% url 'share:show_posts' p.id %}" class="btn btn-primary">Read More &rarr;</a>
+            <a href="{% url 'share:show_posts_index' p.id %}" class="btn btn-primary">Read More &rarr;</a>
           </div>
           <div class="card-footer text-muted">
             {{ p.created }}

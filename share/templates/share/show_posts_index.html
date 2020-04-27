@@ -1,5 +1,5 @@
-{% extends "share/dashboard.html" %}
-{% block posts %}
+{% extends "share/base.html" %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -58,11 +58,16 @@
         <!-- Post Content -->
         <p class="lead"> {{ posts.body }} </p>
 
-        <hr>
-        {% if user.id == posts.plantbuddy.user.id and not posts.make_public  %}
-          <a class="button is-primary is-medium"
-             href="{% url 'share:edit_post' posts.id %}" >Make changes to this post</a>
+        {% if posts.make_public %}
+          This post is public! <br><br>
+        {% else %}
+          This post is private!<br><br>
         {% endif %}
+
+
+        <hr>
+        <a class="button is-primary is-medium"
+           href="{% url 'share:index' %}" >Go back to Blog Home</a>
         <br><br>
         <br><br>
 
