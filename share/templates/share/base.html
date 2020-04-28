@@ -26,28 +26,28 @@
 <body>
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top" style="background-color: rgba(255,255,255,0);">
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top" style="background-color: rgba(99, 99, 99, 0.21); height: 80px;">
+    <h2 class="navbar-brand brand-name"><a href="#"><img class="img-responsive2"src="/static/share/startbootstrap/img/giphy.gif" style="height: 50px;"></a></h2>
+    <a class="navbar-brand" href="{% url 'share:index' %}"><div class="navText" style="font-size:25px; ">plantBUDS</div></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
     <div class="container">
-      <a class="navbar-brand" href="{% url 'share:index' %}"><div class="navText" style="font-size:25px;">plantBUDS</div></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
       <div class="navbarContainer collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <!-- These nav link URLs have to follow this format since other pages extend base.html -->
             <a class="nav-link" href="{% url 'share:dashboard' %}">My Dashboard</a>
           </li>
           <li class="nav-item">
             {% if request.path == "/login" or request.path == "/loguser" %}
             <a class="nav-link" href="{% url 'share:signup' %}">Sign Up</a>
           </li>
+          {% elif request.path == "/signup"  %}
           <li class="nav-item">
-            {% elif request.path == "/signup"  %}
-            <a class="nav-link" href="{% url 'share:login' %}">Log In</a>
-          </li>
+            <a class="nav-link" href="{% url 'share:login' %}">Login</a>
+         </li>
+         {% else %}
           <li class="nav-item">
-            {% else   %}
             <a class="nav-link" href="{% url 'share:logout' %}">Logout {{user.username}}</a>
           </li>
           {% endif %}

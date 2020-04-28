@@ -8,14 +8,19 @@ from django.http import HttpResponse
 def index(request):
     # request for user authentication
     if request.method == "GET":
-        all_posts = Publishing.objects.all()   # all_posts is a list object [   ]
+#        if request.user.is_authenticated:
+#            user = request.user
+            all_posts = Publishing.objects.all()   # all_posts is a list object [   ]
 
-        return render(request, "share/index.html", {'all_posts':all_posts})
-
+            return render(request, "share/index.html", {"all_posts": all_posts})
+#        else:
+#            return redirect("share:login")
+    else:
+        return HttpResponse(status=500)
 '''
+
     else:
         return redirect("share:login")
-
     else:
         return HttpResponse(status=500)
 '''
@@ -253,7 +258,7 @@ def update_post(request, plantbuddy_id):
         all_posts = Publishing.objects.all()
         return render(request, "share/index.html", {"user":user, "all_posts": all_posts, "error":"Can't update!"})
 
-def delete_post(request, plantbuddy_id):
+def delete_post(request, my_posts_id):
     if request.method == "GET":
         user = request.user
         if not user.is_authenticated:
