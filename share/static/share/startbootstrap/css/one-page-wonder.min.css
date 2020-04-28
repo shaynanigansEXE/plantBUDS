@@ -12,11 +12,11 @@
  .bg-black{background-color:#000!important}
  .rounded-pill{border-radius:5rem}
  /*Added transparent background image to navbar*/
- .navbar{background: url(../img/giphy.gif);background-color: #000000;background-position:left bottom -1px;background-size:100px 70px;background-repeat:no-repeat}
+ .navbar{background-color: #000000;}
  /*Added 1px black border around navbar text objects for improved readability*/
  .navbar-custom{padding-top:1rem;padding-bottom:1rem;background-color:rgba(0,0,0, 0);text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;}
- .navbar-custom .navbar-brand{text-transform:uppercase;color: rgb(79, 201, 79);font-size:1.25rem;letter-spacing:.1rem;font-weight:700}
- .navbar-brand:hover{text-shadow: 5px 2px 5px white}
+ .navbar-custom .navbar-brand{text-transform:uppercase; color: rgb(79, 201, 79);font-size:1.25rem;letter-spacing:.1rem;font-weight:700}
+ .navbar-brand:hover{text-shadow: 5px 2px 5px green}
  /*Only affects things with the "navbarResponsive" class id*/
  /*#navbarResponsive{background: url(../img/GrassRockGround.PNG)!important;background-position: center 100px bottom 100px!important;background-size:730px 70px!important;background-repeat: no-repeat !important;}*/
  .navbar-custom .navbar-nav .nav-item{text-transform:uppercase;font-size:.8rem;font-weight:700;letter-spacing:.1rem}
