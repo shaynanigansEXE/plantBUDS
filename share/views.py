@@ -254,7 +254,7 @@ def update_post(request, plantbuddy_id):
         return render(request, "share/index.html", {"user":user, "all_posts": all_posts, "error":"Can't update!"})
 
 def delete_post(request, my_posts_id):
-    if request.method == "GET":
+    if request.method == "POST":
         user = request.user
         if not user.is_authenticated:
             return HttpResponse(status=500)
@@ -262,7 +262,7 @@ def delete_post(request, my_posts_id):
         my_posts = get_object_or_404(Publishing, pk=my_posts_id)
 
         if my_posts.plantbuddy.user.id == user.id:
-            Publishing.objects.get(pk=plantbuddy_id).delete()
+            Publishing.objects.get(pk=my_posts_id).delete()
             return redirect("share:dashboard")
         else:
             all_posts = Publishing.objects.all()

@@ -24,9 +24,7 @@
  /*Added a navbarContainer class to hold this picture of grass*/
  .navbarContainer{background: url(../img/GrassRockGround.PNG)!important;background-position:right bottom!important;background-size:contain!important;background-repeat:no-repeat!important;}
  .navbar-nav{margin-top: 36px!important;background-position:bottom bottom}
- /*Set a background image for the masthead (top portion of page)*/
- header.masthead{position:relative;overflow: auto;padding-top:calc(7rem + 72px);padding-bottom:2rem;background-image:url(../img/cornfield.jpg);background-repeat:no-repeat;background-position:center !important;}
- header.masthead .masthead-content{z-index:1;position:relative;}
+
  header.masthead .masthead-content .masthead-heading{font-size:4rem;}
  header.masthead .masthead-content .masthead-subheading{font-size:2rem}
 
@@ -40,7 +38,6 @@
  {
    /*Added transparent background image to navbar*/
    .navbar-brand{background: url(../img/giphy.gif);float: left;background-position:left -15px bottom;background-size:100px 70px;background-repeat:no-repeat;text-indent: 69px;}
-   .navbar-brand:hover{}
    /*Added 1px black border around navbar text objects for improved readability*/
    .navbar-custom{padding-top:1rem;padding-bottom:1rem;background-color:rgba(0,0,0, 0);text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;}
    .navbar-custom .navbar-brand{text-transform:uppercase;color: rgb(79, 201, 79);font-size:1.25rem;letter-spacing:.1rem;font-weight:700}

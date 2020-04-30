@@ -4,20 +4,20 @@
   <div class="container">
 
     <!-- Jumbotron Header -->
-    <header class="jumbotron my-4">
+    <header class="jumbotron">
       <h1 class="title is-2"> Hello &nbsp<span style="color:#1496ed">{{ user.username }}</span></h1>
       <p class="lead">You can publish new posts here:</p>
       <a href="{% url 'share:publish_post' %}" class="btn btn-primary btn-lg">Publish a post!</a>
       <p class="lead">Posts created by you:</p>
       <a href="{% url 'share:farmer_posts' %}" class="btn btn-primary btn-lg">Show your posts!</a>
     </header>
-
+  <br>
+  <br>
+  <br>
     <section>
       {% block posts %}
       {% endblock %}
     </section>
-
   </div>
-  <!-- /.container -->
 
 {% endblock %}
