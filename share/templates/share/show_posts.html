@@ -59,7 +59,7 @@
         <p class="lead"> {{ posts.body }} </p>
 
         <hr>
-        {% if user.id == posts.plantbuddy.user.id and not posts.make_public  %}
+        {% if user.id == posts.plantbuddy.user.id  %}
           <a class="button is-primary is-medium"
              href="{% url 'share:edit_post' posts.id %}" >Make changes to this post</a>
         {% endif %}

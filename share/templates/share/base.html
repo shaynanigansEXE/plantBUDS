@@ -26,8 +26,8 @@
 <body>
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top" style="background-color: rgba(255,255,255,0);">
-    <div class="container">
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top" style="background-color: rgba(69,69,69,0.5)">
+    <!-- <div class="container"> -->
       <a class="navbar-brand" href="{% url 'share:index' %}"><div class="navText" style="font-size:25px;">plantBUDS</div></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -47,48 +47,24 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'share:logout' %}">Logout {{user.username}}</a>
           </li>
-
-<!--
-          {% if request.path == "/login" or request.path == "/loguser" %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'share:signup' %}">Signup</a>
-          </li>
-           {% elif request.path == "/signup"  %}
-           <li class="nav-item">
-             <a class="nav-link" href="{% url 'share:login' %}">Login</a>
-          </li>
-          {% else %}
-          <li class="nav-item">
-              <a class="nav-link" href="{% url 'share:logout' %}">Logout {{user.username }}</a>
-          </li>
-          {% endif %}
-
-          <li class="nav-item">
-            <a class="nav-link" href="dashboard">Dashboard</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="signup">Sign Up</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="login">Log In</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="logout">Logout</a>
-          </li>
--->
         </ul>
-      </div>
+      <!-- </div> -->
     </div>
   </nav>
 
   <div class="container">
-    <header class="jumbotron my-4" style="background-image: url('/static/share/images/unnamed.jpg'); background-repeat: no-repeat;">
+    <header class="jumbotron my-4" style="height: 300px;background-image: url('/static/share/images/cornfield2.jpg'); background-repeat: no-repeat; background-size:cover;">
       <h1 class="title is-2" style="text-align: center">plantBUDS</h1>
       <p class="lead" style="text-align: center">LEARN MORE ABOUT PLANTS</p>
-      <a href="{% url 'share:info_page' %}" class="btn btn-primary btn-lg" style="float: right">Learn More</a>
+      <div class="center-wrapper">
+        <a href="{% url 'share:info_page' %}" class="button btn-lg">Learn More</a>
+      </div>
     </header>
   </div>
-
+  <br>
+  <br>
+  <br>
+  
   <section>
     {% block content%}
     {% endblock %}
