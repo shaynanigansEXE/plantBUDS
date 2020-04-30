@@ -34,24 +34,22 @@
     </button>
     <div class="navbarContainer collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
+        {% if user.is_authenticated %}
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'share:dashboard' %}">My Dashboard</a>
+          <a class="nav-link" href="{% url 'share:dashboard' %}">Dashboard</a>
         </li>
         <li class="nav-item">
-          {% if request.path == "/login" or request.path == "/loguser" %}
-          <a class="nav-link" href="{% url 'share:signup' %}">Sign Up</a>
-        </li>
-        {% elif request.path == "/signup"  %}
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'share:login' %}">Login</a>
+          <a class="nav-link" href="{% url 'share:logout' %}">Logout</a>
         </li>
         {% else %}
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'share:logout' %}">Logout {{user.username}}</a>
+          <a class="nav-link" href="{% url 'share:login' %}">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'share:signup' %}">Sign Up</a>
         </li>
         {% endif %}
       </ul>
-      <!-- </div> -->
     </div>
   </nav>
 
