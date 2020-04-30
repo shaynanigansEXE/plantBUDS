@@ -8,14 +8,19 @@ from django.http import HttpResponse
 def index(request):
     # request for user authentication
     if request.method == "GET":
-        all_posts = Publishing.objects.all()   # all_posts is a list object [   ]
+#        if request.user.is_authenticated:
+#            user = request.user
+            all_posts = Publishing.objects.all()   # all_posts is a list object [   ]
 
-        return render(request, "share/index.html", {'all_posts':all_posts})
-
+            return render(request, "share/index.html", {"all_posts": all_posts})
+#        else:
+#            return redirect("share:login")
+    else:
+        return HttpResponse(status=500)
 '''
+
     else:
         return redirect("share:login")
-
     else:
         return HttpResponse(status=500)
 '''
@@ -199,11 +204,11 @@ def edit_post(request, plantbuddy_id):
         if not user.is_authenticated:
             return redirect("share:login")
 
-        my_posts = get_object_or_404(Publishing, pk=plantbuddy_id)
+        plantbuddy = get_object_or_404(Publishing, pk=plantbuddy_id)
 
 
-        if my_posts.plantbuddy.user.id == user.id:
-            return render(request, "share/edit_post.html", {"my_posts":my_posts})
+        if plantbuddy.plantbuddy.user.id == user.id:
+            return render(request, "share/edit_post.html", {"plantbuddy":plantbuddy})
         else:
             return render(request, "share/index.html",
             {"error":"You are not the author of the post that you tried to edit."})
@@ -215,10 +220,10 @@ def update_post(request, plantbuddy_id):
         if not user.is_authenticated:
             return HttpResponse(status=500)
 
-        my_posts = get_object_or_404(Publishing, pk=plantbuddy_id)
+        plantbuddy = get_object_or_404(Publishing, pk=plantbuddy_id)
 
         if not request.POST["title"] or not request.POST["description"] or not request.POST["body"]:
-            return render(request, "share/edit_post.html", {"my_posts":my_posts,
+            return render(request, "share/edit_post.html", {"plantbuddy":plantbuddy,
             "error":"One of the required fields was empty"})
 
         else:
@@ -240,15 +245,15 @@ def update_post(request, plantbuddy_id):
             print('make_public:', make_public)
             print('***********************')
 
-            if my_posts.plantbuddy.user.id == user.id and not my_posts.make_public:
+            if plantbuddy.plantbuddy.user.id == user.id and not plantbuddy.make_public:
                 Publishing.objects.filter(pk=plantbuddy_id).update(title=title, description=description, body=body, make_public=make_public)
                 return redirect("share:farmer_posts")
 
             else:
-                return render(request, "share/edit_post.html",{"my_posts":my_posts, "error":"Can't update!"})
+                return render(request, "share/edit_post.html",{"plantbuddy":plantbuddy, "error":"Can't update!"})
 
     else:
-        # the user enteing    http://127.0.0.1:8000/my_posts/8/update
+        # the user enteing    http://127.0.0.1:8000/plantbuddy/8/update
         user = request.user
         all_posts = Publishing.objects.all()
         return render(request, "share/index.html", {"user":user, "all_posts": all_posts, "error":"Can't update!"})
@@ -259,7 +264,7 @@ def delete_post(request, my_posts_id):
         if not user.is_authenticated:
             return HttpResponse(status=500)
 
-        my_posts = get_object_or_404(Publishing, pk=my_posts_id)
+        plantbuddy = get_object_or_404(Publishing, pk=plantbuddy_id)
 
         if my_posts.plantbuddy.user.id == user.id:
             Publishing.objects.get(pk=my_posts_id).delete()

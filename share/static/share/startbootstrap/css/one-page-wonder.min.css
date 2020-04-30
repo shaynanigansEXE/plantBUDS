@@ -12,8 +12,18 @@
 
  .bg-black{background-color:#000!important}
  .rounded-pill{border-radius:5rem}
+<<<<<<< HEAD
  .container .jumbotron{height: 0; position: relative; margin-left: -25px; margin-right: -25px;}
  .postContainer{margin-left: 25px; margin-right: 25px;}
+=======
+ /*Added transparent background image to navbar*/
+ .navbar{background-color: #000000;}
+ /*Added 1px black border around navbar text objects for improved readability*/
+ /*Added 1px black border around navbar text objects for improved readability*/
+ .navbar-custom{padding-top:1rem;padding-bottom:1rem;background-color:rgba(0,0,0, 0);text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;}
+ .navbar-custom .navbar-brand{text-transform:uppercase;color: rgb(79, 201, 79);font-size:1.25rem;letter-spacing:.1rem;font-weight:700}
+ .navbar-brand:hover{text-shadow: 5px 2px 5px orange}
+>>>>>>> 1c0c13a90bfda444c61f7b7f6b762d1d839fe04c
 
  /*Added 1px black border around navbar text objects for improved readability*/
  .navbar-custom{padding-top:1rem;padding-bottom:1rem;background-color: rgba(255,255,255,0.5);text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;}
@@ -23,9 +33,16 @@
  .nav-link{text-transform: uppercase;color: rgb(255, 255, 255) !important;opacity: 100%}
  .nav-link:hover{text-shadow: 5px 2px 5px orange !important}
  /*Added a navbarContainer class to hold this picture of grass*/
+<<<<<<< HEAD
  .navbarContainer{background: url(../img/GrassRockGround.PNG)!important;background-position:right bottom!important;background-size:contain!important;background-repeat:no-repeat!important;}
  .navbar-nav{margin-top: 36px!important;background-position:bottom bottom}
 
+=======
+ .navbar-collapse{background: url(../img/GrassRockGround.PNG)!important; background-position:right bottom!important;background-size:350px!important;background-repeat:no-repeat!important;}
+ /*Set a background image for the masthead (top portion of page)*/
+ header.masthead{position:relative;overflow: auto;padding-top:calc(7rem + 72px);padding-bottom:2rem;background-image:url(../img/cornfield.jpg);background-repeat:no-repeat;background-position:center !important;}
+ header.masthead .masthead-content{z-index:1;position:relative;}
+>>>>>>> 1c0c13a90bfda444c61f7b7f6b762d1d839fe04c
  header.masthead .masthead-content .masthead-heading{font-size:4rem;}
  header.masthead .masthead-content .masthead-subheading{font-size:2rem}
 
