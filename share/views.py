@@ -264,7 +264,7 @@ def delete_post(request, my_posts_id):
         if not user.is_authenticated:
             return HttpResponse(status=500)
 
-        plantbuddy = get_object_or_404(Publishing, pk=plantbuddy_id)
+        my_posts = get_object_or_404(Publishing, pk=my_posts_id)
 
         if my_posts.plantbuddy.user.id == user.id:
             Publishing.objects.get(pk=my_posts_id).delete()
