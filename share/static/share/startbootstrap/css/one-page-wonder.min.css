@@ -13,6 +13,7 @@
  .bg-black{background-color:#000!important}
  .rounded-pill{border-radius:5rem}
  .container .jumbotron{height: 0; position: relative; margin-left: -25px; margin-right: -25px;}
+ .postContainer{margin-left: 25px; margin-right: 25px;}
 
  /*Added 1px black border around navbar text objects for improved readability*/
  .navbar-custom{padding-top:1rem;padding-bottom:1rem;background-color: rgba(255,255,255,0.5);text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;}
@@ -66,6 +67,7 @@
  .btn-secondary:active,.btn-secondary:focus,.btn-secondary:hover{background-color:#c50!important;border-color:#c50!important}
  .btn-secondary:focus{box-shadow:0 0 0 .2rem rgba(255,106,0,.5)}
  .btn-xl{text-transform:uppercase;padding:1.5rem 3rem;font-size:1rem;font-weight:700;letter-spacing:.1rem}
+ .btn-sm{height: 35px;padding: 5px 15px!important; font-size: 15px!important;border-radius: 10px!important;box-shadow: 0 6px #999!important;}
 
  /*Added style rules for button class*/
  .button {position: inherit; display:inline-block;padding: 15px 25px;font-size:24px;cursor:pointer;text-align:center;text-decoration:none;outline:none;color:#fff;background-color:#009900;border:none;border-radius: 15px;box-shadow: 0 9px #999}

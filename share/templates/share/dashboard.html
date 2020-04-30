@@ -1,19 +1,18 @@
 {% extends "share/base.html" %}
 {% block content %}
   <!-- Page Content -->
-  <div class="container">
+  <div class="postContainer">
 
     <!-- Jumbotron Header -->
     <header class="jumbotron">
-      <h1 class="title is-2"> Hello &nbsp<span style="color:#1496ed">{{ user.username }}</span></h1>
+      <h1 class="title is-2"> Hello, <span style="color:#1496ed">{{ user.username }}</span> !</h1>
       <p class="lead">You can publish new posts here:</p>
-      <a href="{% url 'share:publish_post' %}" class="btn btn-primary btn-lg">Publish a post!</a>
+      <a href="{% url 'share:publish_post' %}" class="button btn-primary btn-sm">Publish a post!</a>
+      <br><br><br>
       <p class="lead">Posts created by you:</p>
-      <a href="{% url 'share:farmer_posts' %}" class="btn btn-primary btn-lg">Show your posts!</a>
+      <a href="{% url 'share:farmer_posts' %}" class="button btn-primary btn-sm">Show your posts!</a>
+      <br><br><br>
     </header>
-  <br>
-  <br>
-  <br>
     <section>
       {% block posts %}
       {% endblock %}
